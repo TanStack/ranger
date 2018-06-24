@@ -20,7 +20,7 @@
 
 # React Ranger 🎛
 
-A headless render-prop React component for building range and multi-range sliders.
+A headless render-prop component for building range and multi-range sliders in React
 
 - 2kb gzipped. Wow!
 - Render-Prop pattern allows you to render and style the slider however you want.
