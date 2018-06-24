@@ -15,7 +15,7 @@ class ReactRanger extends React.Component {
     min: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]).isRequired,
-    stepSize: PropTypes.number.isRequired,
+    stepSize: PropTypes.number,
     tickSize: PropTypes.number,
     steps: PropTypes.arrayOf(PropTypes.number),
     ticks: PropTypes.arrayOf(PropTypes.number),
@@ -125,6 +125,11 @@ class ReactRanger extends React.Component {
         }
       })
     } else {
+      if (typeof stepSize === 'undefined') {
+        throw new Error(
+          'Warning: Failed prop type: The prop `stepSize` is expected in `ReactRanger`, but its value is `undefined`'
+        )
+      }
       while (left < val && left + stepSize < val) {
         left += stepSize
       }
