@@ -20,6 +20,8 @@
 
 # React Ranger 🎛
 
+<img src='screenshot.png' />
+
 A headless render-prop component for building range and multi-range sliders in React
 
 - 2kb gzipped. Wow!
