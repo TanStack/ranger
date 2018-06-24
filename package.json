@@ -1,6 +1,6 @@
 {
   "name": "react-ranger",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A render-prop component to build range and multi-range sliders in React",
   "main": "lib/index.js",
   "module": "es/index.js",
