@@ -123,6 +123,7 @@ class SimpleExample extends React.Component {
 - `min: number.isRequired` - The minimum limit for the range
 - `max: number.isRequired` - The maximum limit for the range
 - `value: oneOfType([number, arrayOf(number)]).isRequired` - The current value (or values) for the range
+- `interpolation: oneOf(['linear', 'logarithmic'])` - The interpolation method to use. Defaults to `'linear'`. Note that logarithmic interpolation only works for positive values
 - `stepSize: number.isRequired` - The distance between selectable steps
 - `steps: arrayOf(number)` - An array of custom steps to use. This will override `stepSize`,
 - `tickSize: number`
