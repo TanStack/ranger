@@ -170,8 +170,18 @@ class ReactRanger extends React.Component {
     return Math.max(0, Math.min(100, ((val - min) / (max - min)) * 100))
   }
   getValueForClientX = clientX => {
-    const { min, max } = this.props
+    const { min, max, interpolation } = this.props
     const trackDims = getBoundingClientRect(this.trackEl)
+    const { left, width } = trackDims;
+
+    if (interpolation === 'logarithmic') {
+      let value = clientX - left
+      value *= Math.log10(max) - Math.log10(min);
+      value /= width;
+      value = Math.pow(10, Math.log10(min) + value);
+      return value
+    }
+
     const percentageValue = (clientX - trackDims.left) / trackDims.width
     const value = (max - min) * percentageValue
     return value + min
