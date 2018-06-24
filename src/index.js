@@ -16,6 +16,7 @@ class ReactRanger extends React.Component {
     max: PropTypes.number.isRequired,
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]).isRequired,
     stepSize: PropTypes.number,
+    interpolation: PropTypes.oneOf(['linear', 'logarithmic']),
     tickSize: PropTypes.number,
     steps: PropTypes.arrayOf(PropTypes.number),
     ticks: PropTypes.arrayOf(PropTypes.number),
@@ -26,6 +27,7 @@ class ReactRanger extends React.Component {
     onRelease: PropTypes.func,
   }
   static defaultProps = {
+    interpolation: 'linear',
     tickSize: 10,
   }
   state = {
@@ -144,7 +146,27 @@ class ReactRanger extends React.Component {
   }
   getValues = () => (Array.isArray(this.props.value) ? this.props.value : [this.props.value])
   getPercentageForValue = val => {
-    const { min, max } = this.props
+    const { min, max, interpolation } = this.props
+
+    if (interpolation === 'logarithmic') {
+      const minSign = Math.sign(min)
+      const maxSign = Math.sign(max)
+
+      if (minSign !== maxSign) {
+        throw new Error(
+          'Error: logarithmic interpolation does not support ranges that cross 0.'
+        )
+      }
+
+      let percent = 100 / (Math.log10(Math.abs(max)) - Math.log10(Math.abs(min))) * (Math.log10(Math.abs(val)) - Math.log10(Math.abs(min)));
+
+      if (minSign < 0) {
+        // negative range, means we need to invert our percent because of the Math.abs above
+        return 100 - percent;
+      }
+      
+      return percent;
+    }
     return Math.max(0, Math.min(100, ((val - min) / (max - min)) * 100))
   }
   getValueForClientX = clientX => {
