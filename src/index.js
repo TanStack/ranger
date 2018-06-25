@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { linearInterpolator, logInterpolator } from './interpolators'
+
 const getBoundingClientRect = element => {
   const rect = element.getBoundingClientRect()
   return {
@@ -16,6 +18,10 @@ class ReactRanger extends React.Component {
     max: PropTypes.number.isRequired,
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]).isRequired,
     stepSize: PropTypes.number,
+    interpolator: PropTypes.shape({
+      getPercentageForValue: PropTypes.func,
+      getValueForClientX: PropTypes.func,
+    }),
     tickSize: PropTypes.number,
     steps: PropTypes.arrayOf(PropTypes.number),
     ticks: PropTypes.arrayOf(PropTypes.number),
@@ -26,6 +32,7 @@ class ReactRanger extends React.Component {
     onRelease: PropTypes.func,
   }
   static defaultProps = {
+    interpolator: linearInterpolator,
     tickSize: 10,
   }
   state = {
@@ -144,15 +151,13 @@ class ReactRanger extends React.Component {
   }
   getValues = () => (Array.isArray(this.props.value) ? this.props.value : [this.props.value])
   getPercentageForValue = val => {
-    const { min, max } = this.props
-    return Math.max(0, Math.min(100, ((val - min) / (max - min)) * 100))
+    const { min, max, interpolator } = this.props
+    return interpolator.getPercentageForValue(val, min, max)
   }
   getValueForClientX = clientX => {
-    const { min, max } = this.props
+    const { min, max, interpolator } = this.props
     const trackDims = getBoundingClientRect(this.trackEl)
-    const percentageValue = (clientX - trackDims.left) / trackDims.width
-    const value = (max - min) * percentageValue
-    return value + min
+    return interpolator.getValueForClientX(clientX, trackDims, min, max)
   }
   getTicks = () => {
     const {
@@ -296,3 +301,4 @@ class ReactRanger extends React.Component {
 }
 
 export default ReactRanger
+export { linearInterpolator, logInterpolator }

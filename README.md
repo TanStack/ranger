@@ -123,6 +123,7 @@ class SimpleExample extends React.Component {
 - `min: number.isRequired` - The minimum limit for the range
 - `max: number.isRequired` - The maximum limit for the range
 - `value: oneOfType([number, arrayOf(number)]).isRequired` - The current value (or values) for the range
+- `interpolator: shape({ getPercentageForValue: PropType.func, getValueForClientX: PropTypes.func})` - Interpolator to use. See [Interpolation](#Interpolation)
 - `stepSize: number.isRequired` - The distance between selectable steps
 - `steps: arrayOf(number)` - An array of custom steps to use. This will override `stepSize`,
 - `tickSize: number`
@@ -135,6 +136,35 @@ class SimpleExample extends React.Component {
 - `onPress: func` - A function that is called when a handle is pressed.
 - `onDrag: func` - A function that is called when a handled is dragged.
 - `onRelease: func` - A function that is called when a handle is released.
+
+## Interpolation
+
+By default, `react-ranger` uses linear interpolation between data points. We also provide a logarithmic interpolator and an easy way to create your own.
+
+```javascript
+import ReactRanger, { logInterpolator } from "react-ranger";
+...
+<ReactRanger
+  min={0}
+  max={100}
+  stepSize={5}
+  value={value}
+  interpolator={logInterpolator}
+>
+```
+
+One can create their own interpolator by passing an object that implements the interface described below
+
+```
+{
+  // Takes the value & range and returns a percentage [0, 100] where the value sits from left to right
+  getPercentageForValue: (val: number, min: number, max: number): number
+
+  // Takes the clientX (offset from the left edge of the ranger) along with the dimensions
+  // and range settings and transforms a pixel coordinate back into a value
+  getValueForClientX: (clientX: number, trackDims: object, min: number, max: number): number
+}
+```
 
 ## Contributing
 
