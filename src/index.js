@@ -97,7 +97,9 @@ class ReactRanger extends React.Component {
     if (onDrag) {
       onDrag(e)
     }
-    onChange(newValues)
+    if (onChange) {
+      onChange(newValues)
+    }
   }
   onRelease = e => {
     document.removeEventListener('mousemove', this.onDrag)
