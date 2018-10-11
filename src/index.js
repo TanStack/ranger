@@ -57,7 +57,9 @@ class ReactRanger extends React.Component {
     const { activeHandleIndex } = this.state
     const values = this.getValues()
 
-    const newValue = this.getValueForClientX(e.clientX)
+    const clientX = e.type === 'touchmove' ? e.changedTouches[0].clientX : e.clientX
+
+    const newValue = this.getValueForClientX(clientX)
     const newRoundedValue = this.roundToStep(newValue)
 
     const newValues = [
