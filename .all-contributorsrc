@@ -22,34 +22,6 @@
         "maintenance",
         "review"
       ]
-    },
-    {
-      "login": "cherniavskii",
-      "name": "Andrew Cherniavskii",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/13808724?v=4",
-      "profile": "http://cherniavskii.com",
-      "contributions": [
-        "code",
-        "bug"
-      ]
-    },
-    {
-      "login": "tibotiber",
-      "name": "Thibaut Tiberghien",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/5635553?v=4",
-      "profile": "http://twitter.com/tibotiber",
-      "contributions": [
-        "doc"
-      ]
-    },
-    {
-      "login": "gargroh",
-      "name": "Rohit Garg",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/42495927?v=4",
-      "profile": "https://github.com/gargroh",
-      "contributions": [
-        "tool"
-      ]
     }
   ],
   "contributorsPerLine": 7,
