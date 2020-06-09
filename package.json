@@ -1,6 +1,6 @@
 {
   "name": "react-ranger",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Hooks for building range and multi-range sliders in React",
   "author": "tannerlinsley",
   "license": "MIT",
