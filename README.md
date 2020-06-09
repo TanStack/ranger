@@ -299,6 +299,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://tannerlinsley.com"><img src="https://avatars0.githubusercontent.com/u/5580297?v=4" width="100px;" alt=""/><br /><sub><b>Tanner Linsley</b></sub></a><br /><a href="https://github.com/tannerlinsley/react-ranger/commits?author=tannerlinsley" title="Code">💻</a> <a href="#ideas-tannerlinsley" title="Ideas, Planning, & Feedback">🤔</a> <a href="#example-tannerlinsley" title="Examples">💡</a> <a href="#maintenance-tannerlinsley" title="Maintenance">🚧</a> <a href="https://github.com/tannerlinsley/react-ranger/pulls?q=is%3Apr+reviewed-by%3Atannerlinsley" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://everttimberg.io"><img src="https://avatars3.githubusercontent.com/u/6757853?v=4" width="100px;" alt=""/><br /><sub><b>Evert Timberg</b></sub></a><br /><a href="https://github.com/tannerlinsley/react-ranger/commits?author=etimberg" title="Code">💻</a> <a href="#ideas-etimberg" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
