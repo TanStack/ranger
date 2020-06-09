@@ -217,6 +217,8 @@ function App() {
 
 ## Returns
 
+`useRanger` returns an `object` with the following properties:
+
 - `getTrackProps(userProps): func` - A function that takes optional props and returns the combined necessary props for the track component.
 - `ticks: array` - Ticks to be rendered. Each `tick` has the following props:
   - `value: number` - The tick number to be displayed
