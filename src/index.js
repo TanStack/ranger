@@ -100,7 +100,9 @@ export function useRanger({
   const handleDrag = React.useCallback(
     e => {
       const { activeHandleIndex, onDrag } = getLatest()
-      const newValue = getValueForClientX(e.clientX)
+      const clientX =
+        e.type === 'touchmove' ? e.changedTouches[0].clientX : e.clientX
+      const newValue = getValueForClientX(clientX)
       const newRoundedValue = roundToStep(newValue)
 
       const newValues = [
