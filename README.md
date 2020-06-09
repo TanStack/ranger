@@ -37,9 +37,12 @@ Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley
 
 <!-- ## Used By
 
-- Coming Soon! -->
+- Coming Soon!
+
 
 > _These analytics are made available via the awesome [Scarf](https://www.npmjs.com/package/@scarf/scarf) package analytics library_
+
+-->
 
 ## Examples
 
