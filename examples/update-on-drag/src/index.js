@@ -16,7 +16,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Basic Range</h1>
+      <h1>Update On Drag</h1>
       <br />
       <br />
       <div
