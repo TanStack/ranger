@@ -24,6 +24,8 @@ Hooks for building range and multi-range sliders in React
 
 Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley/react-table), [React Query](https://github.com/tannerlinsley/react-query), [React Form](https://github.com/tannerlinsley/react-form), [React Charts](https://github.com/tannerlinsley/react-charts)
 
+<img src='https://github.com/tannerlinsley/react-ranger/raw/master/media/screenshot.png' width='300'/>
+
 ## Quick Features
 
 - Headless!
@@ -304,6 +306,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
