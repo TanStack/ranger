@@ -22,6 +22,16 @@
         "maintenance",
         "review"
       ]
+    },
+    {
+      "login": "etimberg",
+      "name": "Evert Timberg",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/6757853?v=4",
+      "profile": "http://everttimberg.io",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,
