@@ -39,15 +39,6 @@ Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley
   <img alt="" src="https://badgen.net/bundlephobia/minzip/react-ranger@latest" />
   </a>
 
-<!-- ## Used By
-
-- Coming Soon!
-
-
-> _These analytics are made available via the awesome [Scarf](https://www.npmjs.com/package/@scarf/scarf) package analytics library_
-
--->
-
 ## Examples
 
 - Basic - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/basic) - [Source](./examples/basic)
@@ -147,8 +138,6 @@ $ npm i --save react-ranger
 # or
 $ yarn add react-ranger
 ```
-
-React Ranger uses [Scarf](https://www.npmjs.com/package/@scarf/scarf) to collect anonymized installation analytics. These analytics help support the maintainers of this library. However, if you'd like to opt out, you can do so by setting `scarfSettings.enabled = false` in your project's `package.json`. Alternatively, you can set the environment variable `SCARF_ANALYTICS=false` before you install.
 
 ## Sample Usage
 
