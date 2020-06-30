@@ -32,9 +32,6 @@
     "dist",
     "scripts"
   ],
-  "dependencies": {
-    "@scarf/scarf": "^1.0.0"
-  },
   "peerDependencies": {
     "react": "^16.6.3"
   },
