@@ -233,9 +233,11 @@ export function useRanger({
             handlePress(e, i)
             if (onTouchStart) onTouchStart(e)
           },
-          tabIndex: 1,
+          role: 'slider',
+          'aria-valuemin': min,
+          'aria-valuemax': max,
+          'aria-valuenow': value,
           style: {
-            outline: 0,
             position: 'absolute',
             top: '50%',
             left: `${getPercentageForValue(value)}%`,
@@ -246,7 +248,15 @@ export function useRanger({
           ...rest,
         }),
       })),
-    [activeHandleIndex, getPercentageForValue, handlePress, tempValues, values]
+    [
+      activeHandleIndex,
+      getPercentageForValue,
+      handlePress,
+      min,
+      max,
+      tempValues,
+      values,
+    ]
   )
 
   const getTrackProps = ({ style = {}, ref, ...rest } = {}) => {
