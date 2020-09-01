@@ -95,9 +95,18 @@ function App() {
           <Segment {...getSegmentProps()} index={i} />
         ))}
         {handles.map(({ value, active, getHandleProps }) => (
-          <div {...getHandleProps()}>
+          <button
+            {...getHandleProps({
+              style: {
+                appearance: "none",
+                border: "none",
+                background: "transparent",
+                outline: "none"
+              }
+            })}
+          >
             <Handle active={active}>{value}</Handle>
-          </div>
+          </button>
         ))}
       </Track>
       <br />
