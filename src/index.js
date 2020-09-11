@@ -61,6 +61,35 @@ export function useRanger({
     [interpolator, max, min]
   )
 
+  const getNextStep = React.useCallback(
+    (val, direction) => {
+      if (steps) {
+        let currIndex = steps.indexOf(val)
+        let nextIndex = currIndex + direction
+        if (nextIndex >= 0 && nextIndex < steps.length) {
+          return steps[nextIndex]
+        } else {
+          return val
+        }
+      } else {
+        if (process.env.NODE_ENV !== 'production') {
+          if (typeof stepSize === 'undefined') {
+            throw new Error(
+              'Warning: The option `stepSize` is expected in `useRanger`, but its value is `undefined`'
+            )
+          }
+        }
+        let nextVal = val + stepSize * direction
+        if (nextVal >= min && nextVal <= max) {
+          return nextVal
+        } else {
+          return val
+        }
+      }
+    },
+    [max, min, stepSize, steps]
+  )
+
   const roundToStep = React.useCallback(
     val => {
       let left = min
@@ -118,6 +147,26 @@ export function useRanger({
       }
     },
     [getLatest, getValueForClientX, roundToStep, values]
+  )
+
+  const handleKeyDown = React.useCallback(
+    (e, i) => {
+      const { values, onChange = () => {} } = getLatest()
+      // Left Arrow || Right Arrow
+      if (e.keyCode === 37 || e.keyCode === 39) {
+        setActiveHandleIndex(i)
+        const direction = e.keyCode === 37 ? -1 : 1
+        const newValue = getNextStep(values[i], direction)
+        const newValues = [
+          ...values.slice(0, i),
+          newValue,
+          ...values.slice(i + 1),
+        ]
+        const sortedValues = sortNumList(newValues)
+        onChange(sortedValues)
+      }
+    },
+    [getLatest, getNextStep]
   )
 
   const handlePress = React.useCallback(
@@ -217,12 +266,18 @@ export function useRanger({
           key = i,
           ref,
           innerRef = () => {},
+          onKeyDown,
           onMouseDown,
           onTouchStart,
           style = {},
           ...rest
         } = {}) => ({
           key,
+          onKeyDown: e => {
+            e.persist()
+            handleKeyDown(e, i)
+            if (onKeyDown) onKeyDown(e)
+          },
           onMouseDown: e => {
             e.persist()
             handlePress(e, i)
@@ -233,9 +288,11 @@ export function useRanger({
             handlePress(e, i)
             if (onTouchStart) onTouchStart(e)
           },
-          tabIndex: 1,
+          role: 'slider',
+          'aria-valuemin': min,
+          'aria-valuemax': max,
+          'aria-valuenow': value,
           style: {
-            outline: 0,
             position: 'absolute',
             top: '50%',
             left: `${getPercentageForValue(value)}%`,
@@ -246,7 +303,16 @@ export function useRanger({
           ...rest,
         }),
       })),
-    [activeHandleIndex, getPercentageForValue, handlePress, tempValues, values]
+    [
+      activeHandleIndex,
+      getPercentageForValue,
+      handleKeyDown,
+      handlePress,
+      min,
+      max,
+      tempValues,
+      values,
+    ]
   )
 
   const getTrackProps = ({ style = {}, ref, ...rest } = {}) => {

@@ -35,11 +35,12 @@ function App() {
           <div {...getTickProps()}>{value}</div>
         ))}
         {handles.map(({ getHandleProps }) => (
-          <div
+          <button
             {...getHandleProps({
               style: {
-                width: "12px",
-                height: "12px",
+                width: "14px",
+                height: "14px",
+                outline: "none",
                 borderRadius: "100%",
                 background: "linear-gradient(to bottom, #eee 45%, #ddd 55%)",
                 border: "solid 1px #888"
