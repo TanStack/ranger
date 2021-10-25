@@ -39,6 +39,7 @@ export function useRanger({
   onChange,
   onDrag,
   stepSize,
+  windowHost = window
 }) {
   const [activeHandleIndex, setActiveHandleIndex] = React.useState(null)
   const [tempValues, setTempValues] = React.useState()
@@ -181,10 +182,10 @@ export function useRanger({
           onDrag = () => {},
         } = getLatest()
 
-        document.removeEventListener('mousemove', handleDrag)
-        document.removeEventListener('touchmove', handleDrag)
-        document.removeEventListener('mouseup', handleRelease)
-        document.removeEventListener('touchend', handleRelease)
+        windowHost.document.removeEventListener('mousemove', handleDrag)
+        windowHost.document.removeEventListener('touchmove', handleDrag)
+        windowHost.document.removeEventListener('mouseup', handleRelease)
+        windowHost.document.removeEventListener('touchend', handleRelease)
         const sortedValues = sortNumList(tempValues || values)
         onChange(sortedValues)
         onDrag(sortedValues)
@@ -192,10 +193,10 @@ export function useRanger({
         setTempValues()
       }
 
-      document.addEventListener('mousemove', handleDrag)
-      document.addEventListener('touchmove', handleDrag)
-      document.addEventListener('mouseup', handleRelease)
-      document.addEventListener('touchend', handleRelease)
+      windowHost.document.addEventListener('mousemove', handleDrag)
+      windowHost.document.addEventListener('touchmove', handleDrag)
+      windowHost.document.addEventListener('mouseup', handleRelease)
+      windowHost.document.addEventListener('touchend', handleRelease)
     },
     [getLatest, handleDrag]
   )
