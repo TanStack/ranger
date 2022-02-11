@@ -174,7 +174,7 @@ const interpolator = {
 }
 ```
 
-Here is an exmaple of building and using a logarithmic interpolator!
+Here is an example of building and using a logarithmic interpolator!
 
 ```javascript
 import { useRanger } from 'react-ranger'
