@@ -1,8 +1,8 @@
 {
   "private": true,
-  "repository": "https://github.com/tanstack/react-table.git",
+  "repository": "https://github.com/tanstack/react-ranger.git",
   "scripts": {
-    "linkAll": "lerna exec 'yarn link' && lerna exec 'yarn link @tanstack/react-table' && lerna exec 'yarn link @tanstack/solid-table'",
+    "linkAll": "lerna exec 'yarn link' && lerna exec 'yarn link @tanstack/react-ranger'",
     "unlinkAll": "lerna exec yarn unlink",
     "test": "(is-ci && yarn test:ci) || yarn test:dev",
     "test:ci": "jest",
@@ -16,10 +16,7 @@
     "cipublishforce": "YARN_REGISTRY=https://registry.npmjs.org CI=true yarn cipublish"
   },
   "workspaces": [
-    "./packages/table-core",
-    "./packages/react-table",
-    "./packages/solid-table",
-    "./packages/react-table-devtools"
+    "./packages/ranger-core"
   ],
   "devDependencies": {
     "@babel/core": "^7.16.12",

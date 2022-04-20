@@ -21,10 +21,7 @@ const globals = {
   'solid-js': 'Solid',
   'solid-js/store': 'SolidStore',
   'react-dom': 'ReactDOM',
-  '@tanstack/table-core': 'TableCore',
-  '@tanstack/solid-table': 'SolidTable',
-  '@tanstack/react-table': 'ReactTable',
-  '@tanstack/react-table-devtools': 'ReactTableDevtools',
+  '@tanstack/ranger-core': 'RangerCore',
 }
 
 const externals = Object.keys(globals)
@@ -45,31 +42,10 @@ const babelPlugin = babel({
 export default function rollup(options: RollupOptions): RollupOptions[] {
   return [
     ...buildConfigs({
-      name: 'table-core',
-      packageDir: 'packages/table-core',
-      jsName: 'TableCore',
-      outputFile: 'table-core',
-      entryFile: 'src/index.tsx',
-    }),
-    ...buildConfigs({
-      name: 'react-table',
-      packageDir: 'packages/react-table',
-      jsName: 'ReactTable',
-      outputFile: 'react-table',
-      entryFile: 'src/index.tsx',
-    }),
-    ...buildConfigs({
-      name: 'solid-table',
-      packageDir: 'packages/solid-table',
-      jsName: 'SolidTable',
-      outputFile: 'solid-table',
-      entryFile: 'src/index.tsx',
-    }),
-    ...buildConfigs({
-      name: 'react-table-devtools',
-      packageDir: 'packages/react-table-devtools',
-      jsName: 'ReactTableDevtools',
-      outputFile: 'react-table-devtools',
+      name: 'ranger-core',
+      packageDir: 'packages/ranger-core',
+      jsName: 'RangerCore',
+      outputFile: 'ranger-core',
       entryFile: 'src/index.tsx',
     }),
   ]

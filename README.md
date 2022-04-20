@@ -1,159 +1,240 @@
-![React Table Header](https://github.com/tanstack/react-table/raw/alpha/media/repo-dark.png)
+![React Ranger Header](https://github.com/tannerlinsley/react-ranger/raw/master/media/header.png)
 
-# React Table v8 (alpha)
+<img src='https://github.com/tannerlinsley/react-ranger/raw/master/media/logo.png' width='300'/>
 
-> This is an **alpha** version of React Table v8. It is not ready for production use, but it is ready to be taste-tested!
+Hooks for building range and multi-range sliders in React
 
-> [Looking for version 7? Click here!](https://github.com/tanstack/react-table/tree/v7)
-
-Hooks for building **lightweight, fast and extendable datagrids** for React
-
-<a href="https://twitter.com/intent/tweet?button_hashtag=TanStack" target="\_parent">
-  <img alt="#TanStack" src="https://img.shields.io/twitter/url?color=%2308a0e9&label=%23TanStack&style=social&url=https%3A%2F%2Ftwitter.com%2Fintent%2Ftweet%3Fbutton_hashtag%3DTanStack" />
-</a><a href="https://github.com/tanstack/react-table/actions?table=workflow%3A%22react-table+tests%22">
-<img src="https://github.com/tanstack/react-table/workflows/react-table%20tests/badge.svg" />
-</a><a href="https://npmjs.com/package/react-table" target="\_parent">
-  <img alt="" src="https://img.shields.io/npm/dm/@tanstack/react-table.svg" />
-</a><a href="https://bundlephobia.com/result?p=@tanstack/react-table@latest" target="\_parent">
-  <img alt="" src="https://badgen.net/bundlephobia/minzip/@tanstack/react-table@latest" />
+<a href="https://twitter.com/search?q=%23TanStack" target="\_parent">
+  <img alt="#TanStack" src="https://img.shields.io/twitter/url?color=%2308a0e9&label=%23TanStack&style=social&url=https%3A%2F%2Ftwitter.com%2Fintent%2Ftweet%3Fbutton_hashtag%3DTanStack">
+</a><a href="https://github.com/tannerlinsley/react-ranger/actions?query=workflow%3A%22react-ranger+tests%22">
+<img src="https://github.com/tannerlinsley/react-ranger/workflows/react-ranger%20tests/badge.svg" />
+</a><a href="https://npmjs.com/package/react-ranger" target="\_parent">
+  <img alt="" src="https://img.shields.io/npm/dm/react-ranger.svg" />
+</a><a href="https://bundlephobia.com/result?p=react-ranger@latest" target="\_parent">
+  <img alt="" src="https://badgen.net/bundlephobia/minzip/react-ranger@latest" />
 </a><a href="#badge">
     <img alt="semantic-release" src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg">
-  </a><a href="https://github.com/tanstack/react-table/discussions">
+  </a><a href="https://github.com/tannerlinsley/react-ranger/discussions">
   <img alt="Join the discussion on Github" src="https://img.shields.io/badge/Github%20Discussions%20%26%20Support-Chat%20now!-blue" />
-</a><a href="https://github.com/tanstack/react-table" target="\_parent">
-  <img alt="" src="https://img.shields.io/github/stars/tanstack/react-table.svg?style=social&label=Star" />
+</a><a href="https://github.com/tannerlinsley/react-ranger" target="\_parent">
+  <img alt="" src="https://img.shields.io/github/stars/tannerlinsley/react-ranger.svg?style=social&label=Star" />
 </a><a href="https://twitter.com/tannerlinsley" target="\_parent">
   <img alt="" src="https://img.shields.io/twitter/follow/tannerlinsley.svg?style=social&label=Follow" />
 </a>
 
-Enjoy this library? Try them all! [React Query](https://github.com/tannerlinsley/react-query), [React Form](https://github.com/tannerlinsley/react-form), [React Charts](https://github.com/tannerlinsley/react-charts)
+Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley/react-table), [React Query](https://github.com/tannerlinsley/react-query), [React Form](https://github.com/tannerlinsley/react-form), [React Charts](https://github.com/tannerlinsley/react-charts)
 
-## Visit [/docs](https://github.com/tanstack/react-table/tree/alpha/docs) for docs, guides, API and more!
+<p align="center">
+  <img src='https://github.com/tannerlinsley/react-ranger/raw/master/media/screenshot.png' width="700"/>
+</p>
 
 ## Quick Features
 
-- ~14kb or less (with tree-shaking)
-- 100% TypeScript (but not required)
-- Headless (100% customizable, Bring-your-own-UI)
-- Auto out of the box, opt-in controllable state
-- Filters (column and global)
-- Sorting (multi-column, multi-directional)
-- Grouping & Aggregation
-- Pivoting (coming soon!)
-- Row Selection
-- Row Expansion
-- Column Visibility/Ordering/Pinning/Resizing
-- Table Splitting
-- Animatable
-- Virtualizable
-- Server-side/external data model support
+- Headless!
+- Single or Multiple Handles
+- Handle Devider Items
+- Custom Steps or Step-Size
+- Custom Ticks
+- <a href="https://bundlephobia.com/result?p=react-ranger@latest" target="\_parent">
+  <img alt="" src="https://badgen.net/bundlephobia/minzip/react-ranger@latest" />
+  </a>
 
-## Notable Changes
+## Examples
 
-- Full rewrite to TypeScript
-- Removal of plugin system to favor more inversion of control
-- Vastly larger and improved API
-- Better controlled state management
-- Better support for server-side operations
-- Agnostic Core (+ other framework adapters!)
+- Basic - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/basic) - [Source](./examples/basic)
+- Multi-Range - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/multi-range) - [Source](./examples/multi-range)
+- Custom Steps - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/custom-steps) - [Source](./examples/custom-steps)
+- Custom Styles - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/custom-styles) - [Source](./examples/custom-styles)
+- Update On Drag - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/update-on-drag) - [Source](./examples/update-on-drag)
 
-## Migration
+## Sponsors
 
-Currently migration will involve rewrites to:
+This library is being built and maintained by me, @tannerlinsley and I am always in need of more support to keep projects like this afloat. If you would like to get premium support, add your logo or name on this README, or simply just contribute to my open source Sponsorship goal, [visit my Github Sponsors page!](https://github.com/sponsors/tannerlinsley/)
 
-- Any table logic and API surrounding the `useTable` hook
-- Any custom plugins must be rewritten to wrap/compose the new `useTable` hook
-- Table markup API must be rewritten to use the new API. Don't worry, this is not as big of a deal as it sounds :)
+# Documentation
 
-## Todo (in order of priority)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [ ] Rewrite Core
-  - [x] Core
-  - [x] Columns
-  - [x] Headers
-  - [x] Visibility
-  - [x] Pinning
-  - [x] Filters
-  - [x] Sorting
-  - [x] Grouping
-  - [x] Expanding
-  - [x] Column Sizing
-  - [x] Pagination
-  - [x] Row Selection
-- [ ] Migrate [Examples](https://github.com/tanstack/react-table/tree/alpha/examples)
-  - [x] column-visibility
-  - [x] column-ordering
-  - [x] column-pinning
-  - [x] basic
-  - [x] filters
-  - [x] sorting
-  - [x] pagination
-  - [x] column-sizing
-  - [x] row-selection
-  - [x] expanding
-  - [x] grouping-and-aggregation
-  - [ ] editable-data
-  - [ ] kitchen-sink
-  - [ ] row-dnd
-  - [ ] streaming-rows
-  - [ ] sub-components
-  - [ ] virtualized-rows
-  - [ ] absolute-layout
-  - [ ] block-layout
-  - [ ] animated-framer-motion
-  - [ ] bootstrap
-  - [ ] bootstrap-ui-components
-  - [ ] data-driven-classes-and-styles
-  - [ ] full-width-resizable-table
-  - [ ] full-width-table
-  - [ ] material-ui-components
-  - [ ] material-UI-enhanced-table
-- [ ] [Documentation](https://github.com/tanstack/react-table/tree/alpha/docs/)
-  - [ ] API
-    - [ ] Core
-    - [ ] Columns
-    - [ ] Headers
-    - [ ] Visibility
-    - [ ] Pinning
-    - [ ] Filters
-    - [ ] Sorting
-    - [ ] Grouping
-    - [ ] Expanding
-    - [ ] Column Resizing
-    - [ ] Pagination
-    - [ ] Row Selection
-  - [ ] Guides
-    - [ ] Core
-    - [ ] Columns
-    - [ ] Headers
-    - [ ] Visibility
-    - [ ] Pinning
-    - [ ] Filters
-    - [ ] Sorting
-    - [ ] Grouping
-    - [ ] Expanding
-    - [ ] Column Resizing
-    - [ ] Pagination
-    - [ ] Row Selection
+- [Installation](#installation)
+  - [Sample Usage](#sample-usage)
+  - [Options](#options)
+  - [Returns](#returns)
+  - [Interpolation](#interpolation)
+- [Contributors ✨](#contributors-)
 
-## Installation
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Installation
 
 ```bash
-npm install @tanstack/react-table@alpha
+$ npm i --save react-ranger
 # or
-yarn add @tanstack/react-table@alpha
+$ yarn add react-ranger
 ```
 
-## How to help?
+## Sample Usage
 
-- Try out the already-migrated examples
-- Try it out in your own projects.
-- Introspect the types! Even without the docs finished, the library ships with 100% typescript to help you explore its capabilities.
-- [Read the contribution guidelines](https://github.com/tanstack/react-table/tree/alpha/CONTRIBUTING.md)
-- Write some docs! Start with the [API docs](https://github.com/tanstack/react-table/tree/alpha/docs/docs/api-reference) and try adding some information about one or more of the features. The types do a decent job of showing what's supported and the capabilities of the library.
-- Try your hand at migrating an example to v8! The todo list for the examples is above!
-- **Using a plugin?** Try rewriting your plugin (v8 doesn't have a plugin system any more) as a wrapping hook/function that uses `useTable` internally. The new API is much more powerful and easier to compose. If you find something you can't figure out, let us know and we'll add it to the API.
+The following is a very basic example of a single range input that looks similar to Chrome's default appearance.
 
-### [Become a Sponsor](https://github.com/sponsors/tannerlinsley/)
+```javascript
+import ReactRanger from 'react-ranger'
 
-<!-- USE THE FORCE LUKE -->
+function App() {
+  const [values, setValues] = React.useState([10])
+
+  const { getTrackProps, handles } = useRanger({
+    values,
+    onChange: setValues,
+    min: 0,
+    max: 100,
+    stepSize: 5,
+  })
+
+  return (
+    <>
+      <div
+        {...getTrackProps({
+          style: {
+            height: '4px',
+            background: '#ddd',
+            boxShadow: 'inset 0 1px 2px rgba(0,0,0,.6)',
+            borderRadius: '2px',
+          },
+        })}
+      >
+        {handles.map(({ getHandleProps }) => (
+          <div
+            {...getHandleProps({
+              style: {
+                width: '12px',
+                height: '12px',
+                borderRadius: '100%',
+                background: 'linear-gradient(to bottom, #eee 45%, #ddd 55%)',
+                border: 'solid 1px #888',
+              },
+            })}
+          />
+        ))}
+      </div>
+    </>
+  )
+}
+```
+
+## Options
+
+- `value: Array<number>` - The current value (or values) for the range
+  - **Required**
+- `min: number` - The minimum limit for the range
+  - **Required**
+- `max: number` - The maximum limit for the range
+  - **Required**
+- `stepSize: number` - The distance between selectable steps
+  - **Required**
+- `steps: arrayOf(number)` - An array of custom steps to use. This will override `stepSize`,
+- `tickSize: number`
+- `ticks: arrayOf(number): Default: 10` - An array of custom ticks to use. This will override `tickSize`,
+- `onChange: Function(newValue)` - A function that is called when the handle is released
+- `onDrag: Function(newValue)` - A function that is called when a handled is dragged
+- `interpolator: { getPercentageForValue: Function(value) => decimal, getValueForClientX: Function(x) => value}`
+  - The Interpolator to use
+  - Defualts to the bundled linear-scale interpolator
+    See the [Interpolation section](#interpolation) for more info
+
+## Returns
+
+`useRanger` returns an `object` with the following properties:
+
+- `getTrackProps(userProps): func` - A function that takes optional props and returns the combined necessary props for the track component.
+- `ticks: array` - Ticks to be rendered. Each `tick` has the following props:
+  - `value: number` - The tick number to be displayed
+  - `getTickProps(userProps): func` - A function that take optional props and returns the combined necessary props for the tick component.
+- `segments: array` - Segments to be rendered. Each `segment` has the following props:
+  - `value: number` - The segments ending value
+  - `getSegmentProps(userProps): func` - A function that take optional props and returns the combined necessary props for the segment component.
+- `handles: array` - Handles to be rendered. Each `handle` has the following props:
+  - `value: number` - The current value for the handle
+  - `active: boolean` - Denotes if the handle is currently being dragged.
+  - `getHandleProps(userProps): func` - A function that take optional props and returns the combined necessary props for the handle component.
+- `activeHandleIndex: oneOfType([null, number])` - The zero-based index of the handle that is currently being dragged, or `null` if no handle is being dragged.
+
+## Interpolation
+
+By default, `react-ranger` uses linear interpolation between data points, but allows you to easily customize it to use your own interpolation functions by passing an object that implements the following interface:
+
+```
+const interpolator = {
+  // Takes the value & range and returns a percentage [0, 100] where the value sits from left to right
+  getPercentageForValue: (val: number, min: number, max: number): number
+
+  // Takes the clientX (offset from the left edge of the ranger) along with the dimensions
+  // and range settings and transforms a pixel coordinate back into a value
+  getValueForClientX: (clientX: number, trackDims: object, min: number, max: number): number
+}
+```
+
+Here is an exmaple of building and using a logarithmic interpolator!
+
+```javascript
+import { useRanger } from 'react-ranger'
+
+const logInterpolator = {
+  getPercentageForValue: (val, min, max) => {
+    const minSign = Math.sign(min)
+    const maxSign = Math.sign(max)
+
+    if (minSign !== maxSign) {
+      throw new Error(
+        'Error: logarithmic interpolation does not support ranges that cross 0.'
+      )
+    }
+
+    let percent =
+      (100 / (Math.log10(Math.abs(max)) - Math.log10(Math.abs(min)))) *
+      (Math.log10(Math.abs(val)) - Math.log10(Math.abs(min)))
+
+    if (minSign < 0) {
+      // negative range, means we need to invert our percent because of the Math.abs above
+      return 100 - percent
+    }
+
+    return percent
+  },
+  getValueForClientX: (clientX, trackDims, min, max) => {
+    const { left, width } = trackDims
+    let value = clientX - left
+    value *= Math.log10(max) - Math.log10(min)
+    value /= width
+    value = Math.pow(10, Math.log10(min) + value)
+    return value
+  },
+}
+
+useRanger({
+  interpolator: logInterpolator,
+})
+```
+
+# Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://tannerlinsley.com"><img src="https://avatars0.githubusercontent.com/u/5580297?v=4" width="100px;" alt=""/><br /><sub><b>Tanner Linsley</b></sub></a><br /><a href="https://github.com/tannerlinsley/react-ranger/commits?author=tannerlinsley" title="Code">💻</a> <a href="#ideas-tannerlinsley" title="Ideas, Planning, & Feedback">🤔</a> <a href="#example-tannerlinsley" title="Examples">💡</a> <a href="#maintenance-tannerlinsley" title="Maintenance">🚧</a> <a href="https://github.com/tannerlinsley/react-ranger/pulls?q=is%3Apr+reviewed-by%3Atannerlinsley" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://everttimberg.io"><img src="https://avatars3.githubusercontent.com/u/6757853?v=4" width="100px;" alt=""/><br /><sub><b>Evert Timberg</b></sub></a><br /><a href="https://github.com/tannerlinsley/react-ranger/commits?author=etimberg" title="Code">💻</a> <a href="#ideas-etimberg" title="Ideas, Planning, & Feedback">🤔</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+<!-- Force -->
