@@ -4,7 +4,7 @@
   "compilerOptions": {
     "outDir": "./build/types"
   },
-  "files": ["src/index.js"],
+  "files": ["src/index.jsx"],
   "include": [
     "src"
     //  "__tests__/**/*.test.*"

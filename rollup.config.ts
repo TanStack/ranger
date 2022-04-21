@@ -36,7 +36,7 @@ const umdDevPlugin = (type: 'development' | 'production') =>
 const babelPlugin = babel({
   babelHelpers: 'bundled',
   exclude: /node_modules/,
-  extensions: ['.ts', '.tsx'],
+  extensions: ['.ts', '.tsx', '.jsx'],
 })
 
 export default function rollup(options: RollupOptions): RollupOptions[] {
@@ -46,7 +46,7 @@ export default function rollup(options: RollupOptions): RollupOptions[] {
       packageDir: 'packages/ranger-core',
       jsName: 'RangerCore',
       outputFile: 'ranger-core',
-      entryFile: 'src/index.tsx',
+      entryFile: 'src/index.jsx',
     }),
   ]
 }
@@ -87,7 +87,7 @@ function esm({ input, packageDir, external, banner }: Options): RollupOptions {
       dir: `${packageDir}/build/esm`,
       banner,
     },
-    plugins: [babelPlugin, nodeResolve({ extensions: ['.ts', '.tsx'] })],
+    plugins: [babelPlugin, nodeResolve({ extensions: ['.ts', '.tsx', '.jsx'] })],
   }
 }
 
@@ -104,7 +104,7 @@ function cjs({ input, external, packageDir, banner }: Options): RollupOptions {
       exports: 'named',
       banner,
     },
-    plugins: [babelPlugin, nodeResolve({ extensions: ['.ts', '.tsx'] })],
+    plugins: [babelPlugin, nodeResolve({ extensions: ['.ts', '.tsx', '.jsx'] })],
   }
 }
 
@@ -130,7 +130,7 @@ function umdDev({
     },
     plugins: [
       babelPlugin,
-      nodeResolve({ extensions: ['.ts', '.tsx'] }),
+      nodeResolve({ extensions: ['.ts', '.tsx', '.jsx'] }),
       umdDevPlugin('development'),
     ],
   }
@@ -158,7 +158,7 @@ function umdProd({
     },
     plugins: [
       babelPlugin,
-      nodeResolve({ extensions: ['.ts', '.tsx'] }),
+      nodeResolve({ extensions: ['.ts', '.tsx', '.jsx'] }),
       umdDevPlugin('production'),
       terser({
         mangle: true,
