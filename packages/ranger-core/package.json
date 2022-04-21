@@ -1,5 +1,5 @@
 {
-  "name": "@tanstack/react-core",
+  "name": "@tanstack/ranger-core",
   "author": "Tanner Linsley",
   "version": "2.0.1",
   "description": "Hooks for building range and multi-range sliders in React",
