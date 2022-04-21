@@ -28,6 +28,8 @@ Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley
   <img src='https://github.com/tannerlinsley/react-ranger/raw/master/media/screenshot.png' width="700"/>
 </p>
 
+## Visit [/docs](https://github.com/tanstack/react-ranger/tree/alpha/docs) for docs, guides, API and more!
+
 ## Quick Features
 
 - Headless!
@@ -39,24 +41,6 @@ Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley
   <img alt="" src="https://badgen.net/bundlephobia/minzip/react-ranger@latest" />
   </a>
 
-## Sponsors
-
-This library is being built and maintained by me, @tannerlinsley and I am always in need of more support to keep projects like this afloat. If you would like to get premium support, add your logo or name on this README, or simply just contribute to my open source Sponsorship goal, [visit my Github Sponsors page!](https://github.com/sponsors/tannerlinsley/)
-
-# Documentation
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Installation](#installation)
-  - [Sample Usage](#sample-usage)
-  - [Options](#options)
-  - [Returns](#returns)
-  - [Interpolation](#interpolation)
-- [Contributors ✨](#contributors-)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Installation
 
 ```bash
@@ -65,74 +49,16 @@ $ npm i --save react-ranger
 $ yarn add react-ranger
 ```
 
-## Sample Usage
+## How to help?
 
-The following is a very basic example of a single range input that looks similar to Chrome's default appearance.
+- Try out the already-migrated examples
+- Try it out in your own projects.
+- Introspect the types! Even without the docs finished, the library ships with 100% typescript to help you explore its capabilities.
+- [Read the contribution guidelines](https://github.com/tanstack/react-table/tree/alpha/CONTRIBUTING.md)
+- Write some docs! Start with the [API docs](https://github.com/tanstack/react-table/tree/alpha/docs/docs/api-reference) and try adding some information about one or more of the features. The types do a decent job of showing what's supported and the capabilities of the library.
+- Try your hand at migrating an example to v8! The todo list for the examples is above!
+- **Using a plugin?** Try rewriting your plugin (v8 doesn't have a plugin system any more) as a wrapping hook/function that uses `useTable` internally. The new API is much more powerful and easier to compose. If you find something you can't figure out, let us know and we'll add it to the API.
 
-```javascript
-import ReactRanger from 'react-ranger'
+### [Become a Sponsor](https://github.com/sponsors/tannerlinsley/)
 
-function App() {
-  const [values, setValues] = React.useState([10])
-
-  const { getTrackProps, handles } = useRanger({
-    values,
-    onChange: setValues,
-    min: 0,
-    max: 100,
-    stepSize: 5,
-  })
-
-  return (
-    <>
-      <div
-        {...getTrackProps({
-          style: {
-            height: '4px',
-            background: '#ddd',
-            boxShadow: 'inset 0 1px 2px rgba(0,0,0,.6)',
-            borderRadius: '2px',
-          },
-        })}
-      >
-        {handles.map(({ getHandleProps }) => (
-          <div
-            {...getHandleProps({
-              style: {
-                width: '12px',
-                height: '12px',
-                borderRadius: '100%',
-                background: 'linear-gradient(to bottom, #eee 45%, #ddd 55%)',
-                border: 'solid 1px #888',
-              },
-            })}
-          />
-        ))}
-      </div>
-    </>
-  )
-}
-```
-
-# Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://tannerlinsley.com"><img src="https://avatars0.githubusercontent.com/u/5580297?v=4" width="100px;" alt=""/><br /><sub><b>Tanner Linsley</b></sub></a><br /><a href="https://github.com/tannerlinsley/react-ranger/commits?author=tannerlinsley" title="Code">💻</a> <a href="#ideas-tannerlinsley" title="Ideas, Planning, & Feedback">🤔</a> <a href="#example-tannerlinsley" title="Examples">💡</a> <a href="#maintenance-tannerlinsley" title="Maintenance">🚧</a> <a href="https://github.com/tannerlinsley/react-ranger/pulls?q=is%3Apr+reviewed-by%3Atannerlinsley" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="http://everttimberg.io"><img src="https://avatars3.githubusercontent.com/u/6757853?v=4" width="100px;" alt=""/><br /><sub><b>Evert Timberg</b></sub></a><br /><a href="https://github.com/tannerlinsley/react-ranger/commits?author=etimberg" title="Code">💻</a> <a href="#ideas-etimberg" title="Ideas, Planning, & Feedback">🤔</a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-<!-- Force -->
+<!-- USE THE FORCE LUKE -->
