@@ -23,7 +23,7 @@ menu: API
 - `onDrag: Function(newValue)` - A function that is called when a handled is dragged
 - `interpolator: { getPercentageForValue: Function(value) => decimal, getValueForClientX: Function(x) => value}`
   - The Interpolator to use
-  - Defualts to the bundled linear-scale interpolator
+  - Defaults to the bundled linear-scale interpolator
     See the [Interpolation section](#interpolation) for more info
 
 ## Returns

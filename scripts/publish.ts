@@ -10,7 +10,7 @@ import { getPackageDir } from './utils'
 
 // Originally ported to TS from https://github.com/remix-run/react-router/tree/main/scripts/{version,publish}.js
 import path from 'path'
-import { exec, execSync } from 'child_process'
+import { execSync } from 'child_process'
 import fsp from 'fs/promises'
 import chalk from 'chalk'
 import jsonfile from 'jsonfile'
@@ -123,7 +123,7 @@ async function run() {
     `Parsing ${commitsSinceLatestTag.length} commits since ${latestTag}...`
   )
 
-  // Pares the commit messsages, log them, and determine the type of release needed
+  // Pares the commit messages, log them, and determine the type of release needed
   const recommendedReleaseLevel: number = commitsSinceLatestTag.reduce(
     (releaseLevel, commit) => {
       if (['fix', 'refactor', 'perf'].includes(commit.parsed.type)) {
