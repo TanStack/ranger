@@ -3,20 +3,53 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { useRanger } from "react-ranger";
 
-function App() {
-  const [values, setValues] = React.useState([20, 50, 80]);
+const logInterpolator = {
+  getPercentageForValue: (val, min, max) => {
+    const minSign = Math.sign(min)
+    const maxSign = Math.sign(max)
 
-  const { getTrackProps, handles } = useRanger({
-    min: 0,
+    if (minSign !== maxSign) {
+      throw new Error(
+        'Error: logarithmic interpolation does not support ranges that cross 0.'
+      )
+    }
+
+    let percent =
+      (100 / (Math.log10(Math.abs(max)) - Math.log10(Math.abs(min)))) *
+      (Math.log10(Math.abs(val)) - Math.log10(Math.abs(min)))
+
+    if (minSign < 0) {
+      // negative range, means we need to invert our percent because of the Math.abs above
+      return 100 - percent
+    }
+
+    return percent
+  },
+  getValueForClientX: (clientX, trackDims, min, max) => {
+    const { left, width } = trackDims
+    let value = clientX - left
+    value *= Math.log10(max) - Math.log10(min)
+    value /= width
+    value = Math.pow(10, Math.log10(min) + value)
+    return value
+  },
+}
+
+function App() {
+  const [values, setValues] = React.useState([10]);
+
+  const { getTrackProps, handles, ticks } = useRanger({
+    min: 1,
     max: 100,
-    stepSize: 5,
+    stepSize: 1,
     values,
-    onChange: setValues
+    onChange: setValues,
+    interpolator: logInterpolator,
   });
 
   return (
     <div className="App">
-      <h1>Multi-Range</h1>
+      <h1>Logarithmic interpolator</h1>
       <br />
       <br />
       <div
@@ -29,6 +62,9 @@ function App() {
           }
         })}
       >
+        {ticks.map(({ value, getTickProps }) => (
+          <div {...getTickProps()}>{value}</div>
+        ))}
         {handles.map(({ getHandleProps }) => (
           <button
             {...getHandleProps({
