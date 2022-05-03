@@ -7,10 +7,10 @@ function App() {
   const [values, setValues] = React.useState([10]);
 
   const { getTrackProps, handles } = useRanger({
+    values,
     min: 0,
     max: 100,
     stepSize: 5,
-    values,
     onChange: setValues
   });
 
