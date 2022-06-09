@@ -28,6 +28,8 @@ Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley
   <img src='https://github.com/tannerlinsley/react-ranger/raw/master/media/screenshot.png' width="700"/>
 </p>
 
+## Visit [/docs](https://github.com/tanstack/react-ranger/tree/alpha/docs) for docs, guides, API and more!
+
 ## Quick Features
 
 - Headless!
@@ -39,32 +41,6 @@ Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley
   <img alt="" src="https://badgen.net/bundlephobia/minzip/react-ranger@latest" />
   </a>
 
-## Examples
-
-- Basic - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/basic) - [Source](./examples/basic)
-- Multi-Range - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/multi-range) - [Source](./examples/multi-range)
-- Custom Steps - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/custom-steps) - [Source](./examples/custom-steps)
-- Custom Styles - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/custom-styles) - [Source](./examples/custom-styles)
-- Update On Drag - [CodeSandbox](https://codesandbox.io/s/github/tannerlinsley/react-ranger/tree/master/examples/update-on-drag) - [Source](./examples/update-on-drag)
-
-## Sponsors
-
-This library is being built and maintained by me, @tannerlinsley and I am always in need of more support to keep projects like this afloat. If you would like to get premium support, add your logo or name on this README, or simply just contribute to my open source Sponsorship goal, [visit my Github Sponsors page!](https://github.com/sponsors/tannerlinsley/)
-
-# Documentation
-
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Installation](#installation)
-  - [Sample Usage](#sample-usage)
-  - [Options](#options)
-  - [Returns](#returns)
-  - [Interpolation](#interpolation)
-- [Contributors ✨](#contributors-)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # Installation
 
 ```bash
@@ -73,168 +49,16 @@ $ npm i --save react-ranger
 $ yarn add react-ranger
 ```
 
-## Sample Usage
+## How to help?
 
-The following is a very basic example of a single range input that looks similar to Chrome's default appearance.
+- Try out the already-migrated examples
+- Try it out in your own projects.
+- Introspect the types! Even without the docs finished, the library ships with 100% typescript to help you explore its capabilities.
+- [Read the contribution guidelines](https://github.com/tanstack/react-table/tree/alpha/CONTRIBUTING.md)
+- Write some docs! Start with the [API docs](https://github.com/tanstack/react-table/tree/alpha/docs/docs/api-reference) and try adding some information about one or more of the features. The types do a decent job of showing what's supported and the capabilities of the library.
+- Try your hand at migrating an example to v8! The todo list for the examples is above!
+- **Using a plugin?** Try rewriting your plugin (v8 doesn't have a plugin system any more) as a wrapping hook/function that uses `useTable` internally. The new API is much more powerful and easier to compose. If you find something you can't figure out, let us know and we'll add it to the API.
 
-```javascript
-import ReactRanger from 'react-ranger'
+### [Become a Sponsor](https://github.com/sponsors/tannerlinsley/)
 
-function App() {
-  const [values, setValues] = React.useState([10])
-
-  const { getTrackProps, handles } = useRanger({
-    values,
-    onChange: setValues,
-    min: 0,
-    max: 100,
-    stepSize: 5,
-  })
-
-  return (
-    <>
-      <div
-        {...getTrackProps({
-          style: {
-            height: '4px',
-            background: '#ddd',
-            boxShadow: 'inset 0 1px 2px rgba(0,0,0,.6)',
-            borderRadius: '2px',
-          },
-        })}
-      >
-        {handles.map(({ getHandleProps }) => (
-          <div
-            {...getHandleProps({
-              style: {
-                width: '12px',
-                height: '12px',
-                borderRadius: '100%',
-                background: 'linear-gradient(to bottom, #eee 45%, #ddd 55%)',
-                border: 'solid 1px #888',
-              },
-            })}
-          />
-        ))}
-      </div>
-    </>
-  )
-}
-```
-
-## Options
-
-- `value: Array<number>` - The current value (or values) for the range
-  - **Required**
-- `min: number` - The minimum limit for the range
-  - **Required**
-- `max: number` - The maximum limit for the range
-  - **Required**
-- `stepSize: number` - The distance between selectable steps
-  - **Required**
-- `steps: arrayOf(number)` - An array of custom steps to use. This will override `stepSize`,
-- `tickSize: number`
-- `ticks: arrayOf(number): Default: 10` - An array of custom ticks to use. This will override `tickSize`,
-- `onChange: Function(newValue)` - A function that is called when the handle is released
-- `onDrag: Function(newValue)` - A function that is called when a handled is dragged
-- `interpolator: { getPercentageForValue: Function(value) => decimal, getValueForClientX: Function(x) => value}`
-  - The Interpolator to use
-  - Defualts to the bundled linear-scale interpolator
-    See the [Interpolation section](#interpolation) for more info
-
-## Returns
-
-`useRanger` returns an `object` with the following properties:
-
-- `getTrackProps(userProps): func` - A function that takes optional props and returns the combined necessary props for the track component.
-- `ticks: array` - Ticks to be rendered. Each `tick` has the following props:
-  - `value: number` - The tick number to be displayed
-  - `getTickProps(userProps): func` - A function that take optional props and returns the combined necessary props for the tick component.
-- `segments: array` - Segments to be rendered. Each `segment` has the following props:
-  - `value: number` - The segments ending value
-  - `getSegmentProps(userProps): func` - A function that take optional props and returns the combined necessary props for the segment component.
-- `handles: array` - Handles to be rendered. Each `handle` has the following props:
-  - `value: number` - The current value for the handle
-  - `active: boolean` - Denotes if the handle is currently being dragged.
-  - `getHandleProps(userProps): func` - A function that take optional props and returns the combined necessary props for the handle component.
-- `activeHandleIndex: oneOfType([null, number])` - The zero-based index of the handle that is currently being dragged, or `null` if no handle is being dragged.
-
-## Interpolation
-
-By default, `react-ranger` uses linear interpolation between data points, but allows you to easily customize it to use your own interpolation functions by passing an object that implements the following interface:
-
-```
-const interpolator = {
-  // Takes the value & range and returns a percentage [0, 100] where the value sits from left to right
-  getPercentageForValue: (val: number, min: number, max: number): number
-
-  // Takes the clientX (offset from the left edge of the ranger) along with the dimensions
-  // and range settings and transforms a pixel coordinate back into a value
-  getValueForClientX: (clientX: number, trackDims: object, min: number, max: number): number
-}
-```
-
-Here is an exmaple of building and using a logarithmic interpolator!
-
-```javascript
-import { useRanger } from 'react-ranger'
-
-const logInterpolator = {
-  getPercentageForValue: (val, min, max) => {
-    const minSign = Math.sign(min)
-    const maxSign = Math.sign(max)
-
-    if (minSign !== maxSign) {
-      throw new Error(
-        'Error: logarithmic interpolation does not support ranges that cross 0.'
-      )
-    }
-
-    let percent =
-      (100 / (Math.log10(Math.abs(max)) - Math.log10(Math.abs(min)))) *
-      (Math.log10(Math.abs(val)) - Math.log10(Math.abs(min)))
-
-    if (minSign < 0) {
-      // negative range, means we need to invert our percent because of the Math.abs above
-      return 100 - percent
-    }
-
-    return percent
-  },
-  getValueForClientX: (clientX, trackDims, min, max) => {
-    const { left, width } = trackDims
-    let value = clientX - left
-    value *= Math.log10(max) - Math.log10(min)
-    value /= width
-    value = Math.pow(10, Math.log10(min) + value)
-    return value
-  },
-}
-
-useRanger({
-  interpolator: logInterpolator,
-})
-```
-
-# Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <td align="center"><a href="https://tannerlinsley.com"><img src="https://avatars0.githubusercontent.com/u/5580297?v=4" width="100px;" alt=""/><br /><sub><b>Tanner Linsley</b></sub></a><br /><a href="https://github.com/tannerlinsley/react-ranger/commits?author=tannerlinsley" title="Code">💻</a> <a href="#ideas-tannerlinsley" title="Ideas, Planning, & Feedback">🤔</a> <a href="#example-tannerlinsley" title="Examples">💡</a> <a href="#maintenance-tannerlinsley" title="Maintenance">🚧</a> <a href="https://github.com/tannerlinsley/react-ranger/pulls?q=is%3Apr+reviewed-by%3Atannerlinsley" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="http://everttimberg.io"><img src="https://avatars3.githubusercontent.com/u/6757853?v=4" width="100px;" alt=""/><br /><sub><b>Evert Timberg</b></sub></a><br /><a href="https://github.com/tannerlinsley/react-ranger/commits?author=etimberg" title="Code">💻</a> <a href="#ideas-etimberg" title="Ideas, Planning, & Feedback">🤔</a></td>
-  </tr>
-</table>
-
-<!-- markdownlint-enable -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-<!-- Force -->
+<!-- USE THE FORCE LUKE -->

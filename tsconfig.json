@@ -1,0 +1,7 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/ranger-core" },
+  ]
+  // "exclude": ["node_modules"]
+}
