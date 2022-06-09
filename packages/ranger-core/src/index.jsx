@@ -261,47 +261,36 @@ export function useRanger({
     () =>
       (tempValues || values).map((value, i) => ({
         value,
-        active: i === activeHandleIndex,
-        getHandleProps: ({
-          key = i,
-          ref,
-          innerRef = () => {},
-          onKeyDown,
-          onMouseDown,
-          onTouchStart,
-          style = {},
-          ...rest
-        } = {}) => ({
-          key,
-          onKeyDown: e => {
-            e.persist()
-            handleKeyDown(e, i)
-            if (onKeyDown) onKeyDown(e)
-          },
-          onMouseDown: e => {
-            e.persist()
-            handlePress(e, i)
-            if (onMouseDown) onMouseDown(e)
-          },
-          onTouchStart: e => {
-            e.persist()
-            handlePress(e, i)
-            if (onTouchStart) onTouchStart(e)
-          },
-          role: 'slider',
-          'aria-valuemin': min,
-          'aria-valuemax': max,
-          'aria-valuenow': value,
-          style: {
-            position: 'absolute',
-            top: '50%',
-            left: `${getPercentageForValue(value)}%`,
-            zIndex: i === activeHandleIndex ? '1' : '0',
-            transform: 'translate(-50%, -50%)',
-            ...style,
-          },
-          ...rest,
-        }),
+        isActive: i === activeHandleIndex,
+        onKeyDownHandler: e => {
+          e.persist()
+          handleKeyDown(e, i)
+          if (onKeyDown) onKeyDown(e)
+        },
+        onMouseDownHandler: e => {
+          e.persist()
+          handlePress(e, i)
+          if (onMouseDown) onMouseDown(e)
+        },
+        onTouchStart: e => {
+          e.persist()
+          handlePress(e, i)
+          if (onTouchStart) onTouchStart(e)
+        },
+        getPercentage: () => number (0- 1)
+        
+          // Put this in the docs / examples
+          // role: 'slider',
+          // 'aria-valuemin': min,
+          // 'aria-valuemax': max,
+          // 'aria-valuenow': value,
+          // style: {
+          //   position: 'absolute',
+          //   top: '50%',
+          //   left: `${handle.percent}%`,
+          //   zIndex: handleDrag.isActive ? '1' : '0',
+          //   transform: 'translate(-50%, -50%)',
+          // },
       })),
     [
       activeHandleIndex,
@@ -315,30 +304,12 @@ export function useRanger({
     ]
   )
 
-  const getTrackProps = ({ style = {}, ref, ...rest } = {}) => {
-    return {
-      ref: el => {
-        trackElRef.current = el
-        if (ref) {
-          if (typeof ref === 'function') {
-            ref(el)
-          } else {
-            ref.current = el
-          }
-        }
-      },
-      style: {
-        position: 'relative',
-        userSelect: 'none',
-        ...style,
-      },
-      ...rest,
-    }
-  }
+  // Usage/Examples/Docs
+  // position: 'relative',
+  // userSelect: 'none',
 
   return {
     activeHandleIndex,
-    getTrackProps,
     ticks,
     segments,
     handles,
