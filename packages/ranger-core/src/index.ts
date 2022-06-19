@@ -201,6 +201,7 @@ export class Ranger<TTrackElement = unknown> {
       }
       this.activeHandleIndex = undefined
       this.tempValues = undefined
+      this.options.rerender();
     }
     const { handleDrag } = this
     document.addEventListener('mousemove', handleDrag)
