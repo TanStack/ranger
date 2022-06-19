@@ -1,17 +1,19 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import ReactDOM from "react-dom";
-import { useRanger } from "react-ranger";
+import { useRanger } from "../../../packages/react-ranger/src";
 
 function App() {
-  const [values, setValues] = React.useState([10]);
+  const rangerRef = React.useRef();
+  const [values, setValues] = React.useState([10, 15]);
 
-  const { getTrackProps, handles } = useRanger({
+  const rangerInstance = useRanger({
     values,
     min: 0,
     max: 100,
     stepSize: 5,
-    onChange: setValues
+    onChange: setValues,
+    getRangerElement: () => rangerRef.current,
   });
 
   return (
@@ -20,27 +22,39 @@ function App() {
       <br />
       <br />
       <div
-        {...getTrackProps({
-          style: {
+        ref={rangerRef}
+        style={{
+            position: 'relative',
+            userSelect: 'none',
             height: "4px",
             background: "#ddd",
             boxShadow: "inset 0 1px 2px rgba(0,0,0,.6)",
             borderRadius: "2px"
-          }
-        })}
+        }}
       >
-        {handles.map(({ getHandleProps }) => (
+        {rangerInstance.handles().map(({ value, onKeyDownHandler, onMouseDownHandler, onTouchStart, isActive }, i) => (
           <button
-            {...getHandleProps({
-              style: {
+            key={i}
+            onKeyDown={onKeyDownHandler}
+            onMouseDown={onMouseDownHandler}
+            onTouchStart={onTouchStart}
+            role="slider"
+            aria-valuemin={rangerInstance.options.min}
+            aria-valuemax={rangerInstance.options.max}
+            aria-valuenow={value}
+            style={{
+                position: 'absolute',
+                top: '50%',
+                left: `${rangerInstance.getPercentageForValue(value)}%`,
+                zIndex: isActive ? '1' : '0',
+                transform: 'translate(-50%, -50%)',
                 width: "14px",
                 height: "14px",
                 outline: "none",
                 borderRadius: "100%",
                 background: "linear-gradient(to bottom, #eee 45%, #ddd 55%)",
                 border: "solid 1px #888"
-              }
-            })}
+            }}
           />
         ))}
       </div>

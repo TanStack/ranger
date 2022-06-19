@@ -42,11 +42,11 @@ const babelPlugin = babel({
 export default function rollup(options: RollupOptions): RollupOptions[] {
   return [
     ...buildConfigs({
-      name: 'ranger-core',
-      packageDir: 'packages/ranger-core',
-      jsName: 'RangerCore',
-      outputFile: 'ranger-core',
-      entryFile: 'src/index.jsx',
+      name: 'react-ranger',
+      packageDir: 'packages/react-ranger',
+      jsName: 'ReactRanger',
+      outputFile: 'react-ranger',
+      entryFile: 'src/index.tsx',
     }),
   ]
 }

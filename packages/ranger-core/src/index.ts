@@ -24,6 +24,7 @@ export interface RangerOptions<TTrackElement = unknown> {
   onChange?: (sortedValues: ReadonlyArray<number>) => void
   onDrag?: (sortedValues: ReadonlyArray<number>) => void
 
+  rerender: () => void
   debug?: boolean
 }
 
@@ -138,7 +139,7 @@ export class Ranger<TTrackElement = unknown> {
   }
 
   handleDrag = (e: any) => {
-    if (!this.activeHandleIndex) {
+    if (this.activeHandleIndex === undefined) {
       return
     }
 
@@ -157,6 +158,7 @@ export class Ranger<TTrackElement = unknown> {
       this.options.onDrag(newValues)
     } else {
       this.tempValues = newValues
+      this.options.rerender()
     }
   }
 

@@ -11,6 +11,7 @@ export function useRanger<TTrackElement>(
 
   const resolvedOptions: RangerOptions<TTrackElement> = {
     ...options,
+    rerender: rerender,
     onChange: sortedValues => {
       rerender()
       options.onChange?.(sortedValues)
