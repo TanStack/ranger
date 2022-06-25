@@ -266,15 +266,12 @@ export class Ranger<TTrackElement = unknown> {
       value,
       isActive: i === this.activeHandleIndex,
       onKeyDownHandler: (e: any) => {
-        e.persist()
         this.handleKeyDown(e, i)
       },
       onMouseDownHandler: (e: any) => {
-        e.persist()
         this.handlePress(e, i)
       },
       onTouchStart: (e: any) => {
-        e.persist()
         this.handlePress(e, i)
       },
     }))
