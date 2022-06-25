@@ -15,6 +15,7 @@
     "baseUrl": ".",
     "paths": {
       "@tanstack/ranger-core": ["packages/ranger-core"],
+      "@tanstack/react-ranger": ["packages/react-ranger"]
     }
   }
 }

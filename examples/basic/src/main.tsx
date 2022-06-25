@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import ReactDOM from "react-dom";
-import { useRanger } from "../../../packages/react-ranger/src";
+import { useRanger, Ranger } from "../../../packages/react-ranger";
 
 function App() {
-  const rangerRef = React.useRef();
+  const rangerRef = React.useRef<HTMLDivElement>(null);
   const [values, setValues] = React.useState([10, 15]);
 
   const rangerInstance = useRanger({
@@ -12,7 +12,7 @@ function App() {
     min: 0,
     max: 100,
     stepSize: 5,
-    onChange: (instance) => setValues(instance.sortedValues),
+    onChange: (instance: Ranger<HTMLDivElement>) => setValues(instance.sortedValues),
     getRangerElement: () => rangerRef.current,
   });
 
@@ -32,7 +32,7 @@ function App() {
             borderRadius: "2px"
         }}
       >
-        {rangerInstance.handles().map(({ value, onKeyDownHandler, onMouseDownHandler, onTouchStart, isActive }, i) => (
+        {rangerInstance.handles().map(({ value, onKeyDownHandler, onMouseDownHandler, onTouchStart, isActive }: Ranger<HTMLDivElement>, i: number) => (
           <button
             key={i}
             onKeyDown={onKeyDownHandler}

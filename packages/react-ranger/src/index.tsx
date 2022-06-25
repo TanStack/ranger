@@ -12,9 +12,9 @@ export function useRanger<TTrackElement>(
   const resolvedOptions: RangerOptions<TTrackElement> = {
     ...options,
     rerender: rerender,
-    onChange: sortedValues => {
+    onChange: instance => {
       rerender()
-      options.onChange?.(sortedValues)
+      options.onChange?.(instance)
     },
   }
 
@@ -30,3 +30,5 @@ export function useRanger<TTrackElement>(
 
   return instance
 }
+
+export type { Ranger }

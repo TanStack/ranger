@@ -1,5 +1,6 @@
 {
-  "name": "dynamic",
+  "name": "basic",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "vite",
