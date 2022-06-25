@@ -1,5 +1,7 @@
 import { linearInterpolator, getBoundingClientRect, sortNumList } from './utils'
 
+type RangerChangeEvent =  (sortedValues: ReadonlyArray<number>) => void
+
 export interface RangerOptions<TTrackElement = unknown> {
   // Required from the user
   getRangerElement: () => TTrackElement
@@ -21,8 +23,8 @@ export interface RangerOptions<TTrackElement = unknown> {
   steps: ReadonlyArray<number>
   stepSize: number
 
-  onChange?: (sortedValues: ReadonlyArray<number>) => void
-  onDrag?: (sortedValues: ReadonlyArray<number>) => void
+  onChange?: RangerChangeEvent
+  onDrag?: RangerChangeEvent
 
   rerender: () => void
   debug?: boolean
@@ -32,7 +34,7 @@ export class Ranger<TTrackElement = unknown> {
   activeHandleIndex: number | undefined
   tempValues: ReadonlyArray<number> | undefined
 
-  options!: Required<RangerOptions<TTrackElement>>
+  options!: Required<Omit<RangerOptions<TTrackElement>, 'onDrag'>> & { onDrag?: RangerChangeEvent }
 
   private rangerElement: TTrackElement | null = null
 
@@ -50,7 +52,6 @@ export class Ranger<TTrackElement = unknown> {
       tickSize: 10,
       interpolator: linearInterpolator,
       onChange: () => {},
-      onDrag: () => {},
       ...opts,
     }
   }
