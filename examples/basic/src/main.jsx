@@ -12,7 +12,7 @@ function App() {
     min: 0,
     max: 100,
     stepSize: 5,
-    onChange: setValues,
+    onChange: (instance) => setValues(instance.sortedValues),
     getRangerElement: () => rangerRef.current,
   });
 

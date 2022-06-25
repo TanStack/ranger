@@ -1,6 +1,6 @@
 import { linearInterpolator, getBoundingClientRect, sortNumList } from './utils'
 
-type RangerChangeEvent =  (sortedValues: ReadonlyArray<number>) => void
+type RangerChangeEvent<TTrackElement> =  (instance: Ranger<TTrackElement>) => void
 
 export interface RangerOptions<TTrackElement = unknown> {
   // Required from the user
@@ -23,8 +23,8 @@ export interface RangerOptions<TTrackElement = unknown> {
   steps: ReadonlyArray<number>
   stepSize: number
 
-  onChange?: RangerChangeEvent
-  onDrag?: RangerChangeEvent
+  onChange?: RangerChangeEvent<TTrackElement>
+  onDrag?: RangerChangeEvent<TTrackElement>
 
   rerender: () => void
   debug?: boolean
@@ -33,8 +33,9 @@ export interface RangerOptions<TTrackElement = unknown> {
 export class Ranger<TTrackElement = unknown> {
   activeHandleIndex: number | undefined
   tempValues: ReadonlyArray<number> | undefined
+  sortedValues: ReadonlyArray<number> = []
 
-  options!: Required<Omit<RangerOptions<TTrackElement>, 'onDrag'>> & { onDrag?: RangerChangeEvent }
+  options!: Required<Omit<RangerOptions<TTrackElement>, 'onDrag'>> & { onDrag?: RangerChangeEvent<TTrackElement> }
 
   private rangerElement: TTrackElement | null = null
 
@@ -147,16 +148,16 @@ export class Ranger<TTrackElement = unknown> {
     const newValue = this.getValueForClientX(clientX)
     const newRoundedValue = this.roundToStep(newValue)
 
-    const newValues = [
+    this.sortedValues = [
       ...this.options.values.slice(0, this.activeHandleIndex),
       newRoundedValue,
       ...this.options.values.slice(this.activeHandleIndex + 1),
     ]
 
     if (this.options.onDrag) {
-      this.options.onDrag(newValues)
+      this.options.onDrag(this)
     } else {
-      this.tempValues = newValues
+      this.tempValues = this.sortedValues
       this.options.rerender()
     }
   }
@@ -174,9 +175,9 @@ export class Ranger<TTrackElement = unknown> {
         newValue,
         ...values.slice(i + 1),
       ]
-      const sortedValues = sortNumList(newValues)
+      this.sortedValues = sortNumList(newValues)
       if (this.options.onChange) {
-        this.options.onChange(sortedValues)
+        this.options.onChange(this)
       }
     }
   }
@@ -191,12 +192,12 @@ export class Ranger<TTrackElement = unknown> {
       document.removeEventListener('touchmove', handleDrag)
       document.removeEventListener('mouseup', handleRelease)
       document.removeEventListener('touchend', handleRelease)
-      const sortedValues = sortNumList(tempValues || this.options.values)
+      this.sortedValues = sortNumList(tempValues || this.options.values)
       if (this.options.onChange) {
-        this.options.onChange(sortedValues)
+        this.options.onChange(this)
       }
       if (this.options.onDrag) {
-        this.options.onDrag(sortedValues)
+        this.options.onDrag(this)
       }
       this.activeHandleIndex = undefined
       this.tempValues = undefined
