@@ -5,7 +5,7 @@ export interface RangerOptions<TTrackElement = unknown> {
   getRangerElement: () => TTrackElement
   values: ReadonlyArray<number>
 
-  interpolator: {
+  interpolator?: {
     getPercentageForValue: (val: number, min: number, max: number) => number
     getValueForClientX: (
       clientX: number,
@@ -14,7 +14,7 @@ export interface RangerOptions<TTrackElement = unknown> {
       max: number
     ) => number
   }
-  tickSize: number
+  tickSize?: number
   min: number
   max: number
   ticks: ReadonlyArray<number>
@@ -32,7 +32,7 @@ export class Ranger<TTrackElement = unknown> {
   activeHandleIndex: number | undefined
   tempValues: ReadonlyArray<number> | undefined
 
-  options!: RangerOptions<TTrackElement>
+  options!: Required<RangerOptions<TTrackElement>>
 
   private rangerElement: TTrackElement | null = null
 
@@ -47,10 +47,10 @@ export class Ranger<TTrackElement = unknown> {
 
     this.options = {
       debug: false,
-      // @ts-ignore
       tickSize: 10,
-      // @ts-ignore
       interpolator: linearInterpolator,
+      onChange: () => {},
+      onDrag: () => {},
       ...opts,
     }
   }
@@ -85,7 +85,6 @@ export class Ranger<TTrackElement = unknown> {
         return val
       }
     } else {
-      // @ts-ignore
       if (process.env.NODE_ENV !== 'production' && this.options.debug) {
         if (typeof stepSize === 'undefined') {
           throw new Error(
@@ -117,7 +116,6 @@ export class Ranger<TTrackElement = unknown> {
         }
       })
     } else {
-      // @ts-ignore
       if (process.env.NODE_ENV !== 'production' && this.options.debug) {
         if (typeof stepSize === 'undefined') {
           throw new Error(
