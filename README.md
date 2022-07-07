@@ -34,7 +34,7 @@ Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley
 
 - Headless!
 - Single or Multiple Handles
-- Handle Devider Items
+- Handle Divider Items
 - Custom Steps or Step-Size
 - Custom Ticks
 - <a href="https://bundlephobia.com/result?p=react-ranger@latest" target="\_parent">
