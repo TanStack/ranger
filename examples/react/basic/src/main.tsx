@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import ReactDOM from "react-dom";
-import { useRanger, Ranger } from "../../../packages/react-ranger";
+import { useRanger, Ranger } from "../../../../packages/react-ranger";
 
 function App() {
   const rangerRef = React.useRef<HTMLDivElement>(null);
