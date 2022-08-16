@@ -17,7 +17,7 @@ export const linearInterpolator = {
     clientX: number,
     trackDims: { width: number; left: number },
     min: number,
-    max: number
+    max: number,
   ) => {
     const { left, width } = trackDims
     const percentageValue = (clientX - left) / width

@@ -52,29 +52,29 @@ export default function rollup(options: RollupOptions): RollupOptions[] {
         react: 'React',
       },
     }),
-    ...buildConfigs({
-      name: 'solid-ranger',
-      packageDir: 'packages/solid-ranger',
-      jsName: 'SolidRanger',
-      outputFile: 'solid-ranger',
-      entryFile: 'src/index.tsx',
-      globals: {
-        'solid-js': 'Solid',
-        'solid-js/store': 'Solid/Store',
-      },
-    }),
-    ...buildConfigs({
-      name: 'svelte-ranger',
-      packageDir: 'packages/svelte-ranger',
-      jsName: 'SvelteRanger',
-      outputFile: 'svelte-ranger',
-      entryFile: 'src/index.ts',
-      globals: {
-        svelte: 'Svelte',
-        'svelte/internal': 'SvelteInternal',
-        'svelte/store': 'SvelteStore',
-      },
-    }),
+    // ...buildConfigs({
+    //   name: 'solid-ranger',
+    //   packageDir: 'packages/solid-ranger',
+    //   jsName: 'SolidRanger',
+    //   outputFile: 'solid-ranger',
+    //   entryFile: 'src/index.tsx',
+    //   globals: {
+    //     'solid-js': 'Solid',
+    //     'solid-js/store': 'Solid/Store',
+    //   },
+    // }),
+    // ...buildConfigs({
+    //   name: 'svelte-ranger',
+    //   packageDir: 'packages/svelte-ranger',
+    //   jsName: 'SvelteRanger',
+    //   outputFile: 'svelte-ranger',
+    //   entryFile: 'src/index.ts',
+    //   globals: {
+    //     svelte: 'Svelte',
+    //     'svelte/internal': 'SvelteInternal',
+    //     'svelte/store': 'SvelteStore',
+    //   },
+    // }),
   ]
 }
 

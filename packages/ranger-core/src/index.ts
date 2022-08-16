@@ -1,6 +1,8 @@
 import { linearInterpolator, getBoundingClientRect, sortNumList } from './utils'
 
-type RangerChangeEvent<TTrackElement> =  (instance: Ranger<TTrackElement>) => void
+type RangerChangeEvent<TTrackElement> = (
+  instance: Ranger<TTrackElement>,
+) => void
 
 export interface RangerOptions<TTrackElement = unknown> {
   // Required from the user
@@ -13,7 +15,7 @@ export interface RangerOptions<TTrackElement = unknown> {
       clientX: number,
       trackDims: { width: number; left: number },
       min: number,
-      max: number
+      max: number,
     ) => number
   }
   tickSize?: number
@@ -35,7 +37,9 @@ export class Ranger<TTrackElement = unknown> {
   tempValues: ReadonlyArray<number> | undefined
   sortedValues: ReadonlyArray<number> = []
 
-  options!: Required<Omit<RangerOptions<TTrackElement>, 'onDrag'>> & { onDrag?: RangerChangeEvent<TTrackElement> }
+  options!: Required<Omit<RangerOptions<TTrackElement>, 'onDrag'>> & {
+    onDrag?: RangerChangeEvent<TTrackElement>
+  }
 
   private rangerElement: TTrackElement | null = null
 
@@ -71,18 +75,18 @@ export class Ranger<TTrackElement = unknown> {
       clientX,
       trackDims,
       this.options.min,
-      this.options.max
+      this.options.max,
     )
   }
 
-  getNextStep = (val: number, direction: number) => {
+  getNextStep = (val: number, direction: number): number => {
     const { steps, stepSize, min, max } = this.options
 
     if (steps) {
       let currIndex = steps.indexOf(val)
       let nextIndex = currIndex + direction
       if (nextIndex >= 0 && nextIndex < steps.length) {
-        return steps[nextIndex]
+        return steps[nextIndex] as number
       } else {
         return val
       }
@@ -90,7 +94,7 @@ export class Ranger<TTrackElement = unknown> {
       if (process.env.NODE_ENV !== 'production' && this.options.debug) {
         if (typeof stepSize === 'undefined') {
           throw new Error(
-            'Warning: The option `stepSize` is expected in `useRanger`, but its value is `undefined`'
+            'Warning: The option `stepSize` is expected in `useRanger`, but its value is `undefined`',
           )
         }
       }
@@ -109,7 +113,7 @@ export class Ranger<TTrackElement = unknown> {
     let left = min
     let right = max
     if (steps) {
-      steps.forEach(step => {
+      steps.forEach((step) => {
         if (step <= val && step > left) {
           left = step
         }
@@ -121,7 +125,7 @@ export class Ranger<TTrackElement = unknown> {
       if (process.env.NODE_ENV !== 'production' && this.options.debug) {
         if (typeof stepSize === 'undefined') {
           throw new Error(
-            'Warning: The option `stepSize` is expected in `useRanger`, but its value is `undefined`'
+            'Warning: The option `stepSize` is expected in `useRanger`, but its value is `undefined`',
           )
         }
       }
@@ -169,7 +173,7 @@ export class Ranger<TTrackElement = unknown> {
     if (e.keyCode === 37 || e.keyCode === 39) {
       this.activeHandleIndex = i
       const direction = e.keyCode === 37 ? -1 : 1
-      const newValue = this.getNextStep(values[i], direction)
+      const newValue = this.getNextStep(values[i] as number, direction)
       const newValues = [
         ...values.slice(0, i),
         newValue,
@@ -201,7 +205,7 @@ export class Ranger<TTrackElement = unknown> {
       }
       this.activeHandleIndex = undefined
       this.tempValues = undefined
-      this.options.rerender();
+      this.options.rerender()
     }
     const { handleDrag } = this
     document.addEventListener('mousemove', handleDrag)
@@ -214,7 +218,7 @@ export class Ranger<TTrackElement = unknown> {
     this.options.interpolator.getPercentageForValue(
       val,
       this.options.min,
-      this.options.max
+      this.options.max,
     )
 
   getTicks = () => {
@@ -225,10 +229,10 @@ export class Ranger<TTrackElement = unknown> {
     if (!ticks) {
       ticks = [this.options.min]
       while (
-        ticks[ticks.length - 1] <
+        (ticks[ticks.length - 1] as number) <
         this.options.max - this.options.tickSize
       ) {
-        ticks.push(ticks[ticks.length - 1] + this.options.tickSize)
+        ticks.push((ticks[ticks.length - 1] as number) + this.options.tickSize)
       }
       ticks.push(this.options.max)
     }
@@ -250,7 +254,9 @@ export class Ranger<TTrackElement = unknown> {
       value,
       getSegmentProps: ({ key = i, ...rest } = {}) => {
         const left = this.getPercentageForValue(
-          sortedValues[i - 1] ? sortedValues[i - 1] : this.options.min
+          (sortedValues[i - 1] as number)
+            ? (sortedValues[i - 1] as number)
+            : this.options.min,
         )
         const width = this.getPercentageForValue(value) - left
         return {
