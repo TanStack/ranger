@@ -6,6 +6,8 @@ import visualizer from 'rollup-plugin-visualizer'
 import replace from '@rollup/plugin-replace'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import path from 'path'
+import svelte from 'rollup-plugin-svelte'
+import dts from 'rollup-plugin-dts'
 
 type Options = {
   input: string
@@ -14,17 +16,8 @@ type Options = {
   banner: string
   jsName: string
   outputFile: string
+  globals: Record<string, string>
 }
-
-const globals = {
-  react: 'React',
-  'solid-js': 'Solid',
-  'solid-js/store': 'SolidStore',
-  'react-dom': 'ReactDOM',
-  '@tanstack/ranger-core': 'RangerCore',
-}
-
-const externals = Object.keys(globals)
 
 const umdDevPlugin = (type: 'development' | 'production') =>
   replace({
@@ -36,17 +29,51 @@ const umdDevPlugin = (type: 'development' | 'production') =>
 const babelPlugin = babel({
   babelHelpers: 'bundled',
   exclude: /node_modules/,
-  extensions: ['.ts', '.tsx', '.jsx'],
+  extensions: ['.ts', '.tsx'],
 })
 
 export default function rollup(options: RollupOptions): RollupOptions[] {
   return [
+    ...buildConfigs({
+      name: 'ranger-core',
+      packageDir: 'packages/ranger-core',
+      jsName: 'RangerCore',
+      outputFile: 'ranger-core',
+      entryFile: 'src/index.ts',
+      globals: {},
+    }),
     ...buildConfigs({
       name: 'react-ranger',
       packageDir: 'packages/react-ranger',
       jsName: 'ReactRanger',
       outputFile: 'react-ranger',
       entryFile: 'src/index.tsx',
+      globals: {
+        react: 'React',
+      },
+    }),
+    ...buildConfigs({
+      name: 'solid-ranger',
+      packageDir: 'packages/solid-ranger',
+      jsName: 'SolidRanger',
+      outputFile: 'solid-ranger',
+      entryFile: 'src/index.tsx',
+      globals: {
+        'solid-js': 'Solid',
+        'solid-js/store': 'Solid/Store',
+      },
+    }),
+    ...buildConfigs({
+      name: 'svelte-ranger',
+      packageDir: 'packages/svelte-ranger',
+      jsName: 'SvelteRanger',
+      outputFile: 'svelte-ranger',
+      entryFile: 'src/index.ts',
+      globals: {
+        svelte: 'Svelte',
+        'svelte/internal': 'SvelteInternal',
+        'svelte/store': 'SvelteStore',
+      },
     }),
   ]
 }
@@ -57,11 +84,12 @@ function buildConfigs(opts: {
   jsName: string
   outputFile: string
   entryFile: string
+  globals: Record<string, string>
 }): RollupOptions[] {
   const input = path.resolve(opts.packageDir, opts.entryFile)
-  const externalDeps = [...externals]
+  const externalDeps = Object.keys(opts.globals)
 
-  const external = moduleName => externalDeps.includes(moduleName)
+  const external = (moduleName) => externalDeps.includes(moduleName)
   const banner = createBanner(opts.name)
 
   const options: Options = {
@@ -71,9 +99,16 @@ function buildConfigs(opts: {
     packageDir: opts.packageDir,
     external,
     banner,
+    globals: opts.globals,
   }
 
-  return [esm(options), cjs(options), umdDev(options), umdProd(options)]
+  return [
+    esm(options),
+    cjs(options),
+    umdDev(options),
+    umdProd(options),
+    types(options),
+  ]
 }
 
 function esm({ input, packageDir, external, banner }: Options): RollupOptions {
@@ -87,7 +122,15 @@ function esm({ input, packageDir, external, banner }: Options): RollupOptions {
       dir: `${packageDir}/build/esm`,
       banner,
     },
-    plugins: [babelPlugin, nodeResolve({ extensions: ['.ts', '.tsx', '.jsx'] })],
+    plugins: [
+      svelte({
+        compilerOptions: {
+          hydratable: true,
+        },
+      }),
+      babelPlugin,
+      nodeResolve({ extensions: ['.ts', '.tsx'] }),
+    ],
   }
 }
 
@@ -104,7 +147,11 @@ function cjs({ input, external, packageDir, banner }: Options): RollupOptions {
       exports: 'named',
       banner,
     },
-    plugins: [babelPlugin, nodeResolve({ extensions: ['.ts', '.tsx', '.jsx'] })],
+    plugins: [
+      svelte(),
+      babelPlugin,
+      nodeResolve({ extensions: ['.ts', '.tsx'] }),
+    ],
   }
 }
 
@@ -113,6 +160,7 @@ function umdDev({
   external,
   packageDir,
   outputFile,
+  globals,
   banner,
   jsName,
 }: Options): RollupOptions {
@@ -129,8 +177,9 @@ function umdDev({
       banner,
     },
     plugins: [
+      svelte(),
       babelPlugin,
-      nodeResolve({ extensions: ['.ts', '.tsx', '.jsx'] }),
+      nodeResolve({ extensions: ['.ts', '.tsx'] }),
       umdDevPlugin('development'),
     ],
   }
@@ -141,6 +190,7 @@ function umdProd({
   external,
   packageDir,
   outputFile,
+  globals,
   banner,
   jsName,
 }: Options): RollupOptions {
@@ -157,8 +207,9 @@ function umdProd({
       banner,
     },
     plugins: [
+      svelte(),
       babelPlugin,
-      nodeResolve({ extensions: ['.ts', '.tsx', '.jsx'] }),
+      nodeResolve({ extensions: ['.ts', '.tsx'] }),
       umdDevPlugin('production'),
       terser({
         mangle: true,
@@ -166,15 +217,34 @@ function umdProd({
       }),
       size({}),
       visualizer({
-        filename: `${packageDir}/build/stats-html.html`,
+        filename: `${packageDir}/build/stats.html`,
         gzipSize: true,
       }),
       visualizer({
-        filename: `${packageDir}/build/stats-react.json`,
+        filename: `${packageDir}/build/stats.json`,
         json: true,
         gzipSize: true,
       }),
     ],
+  }
+}
+
+function types({
+  input,
+  packageDir,
+  external,
+  banner,
+}: Options): RollupOptions {
+  return {
+    // TYPES
+    external,
+    input,
+    output: {
+      format: 'es',
+      file: `${packageDir}/build/types/index.d.ts`,
+      banner,
+    },
+    plugins: [dts()],
   }
 }
 
