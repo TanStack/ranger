@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import { useRanger } from "react-ranger";
 
 function App() {
-  const [values, setValues] = React.useState([10]);
+  const [values, setValues] = React.useState([10, 15]);
 
   const { getTrackProps, handles } = useRanger({
     values,
