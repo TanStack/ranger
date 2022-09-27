@@ -15,11 +15,4 @@ export default defineConfig({
     }),
     react(),
   ],
-  resolve: process.env.USE_SOURCE
-    ? {
-        alias: {
-          'react-ranger': path.resolve(__dirname, '../../src/index.js'),
-        },
-      }
-    : {},
 })

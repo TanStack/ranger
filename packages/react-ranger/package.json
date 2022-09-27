@@ -1,0 +1,39 @@
+{
+  "name": "@tanstack/react-ranger",
+  "author": "Tanner Linsley",
+  "version": "2.0.1",
+  "description": "Hooks for building range and multi-range sliders in React",
+  "license": "MIT",
+  "homepage": "https://github.com/tannerlinsley/react-ranger#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanstack/react-ranger.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "react",
+    "ranger",
+    "ranger-core"
+  ],
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/tannerlinsley"
+  },
+  "module": "build/esm/index.js",
+  "main": "build/cjs/index.js",
+  "browser": "build/umd/index.production.min.js",
+  "types": "build/types/index.d.ts",
+  "engines": {
+    "node": ">=12"
+  },
+  "files": [
+    "build",
+    "src"
+  ],
+  "peerDependencies": {
+    "react": ">=16",
+    "react-dom": ">=16"
+  }
+}

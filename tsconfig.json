@@ -2,6 +2,7 @@
   "files": [],
   "references": [
     { "path": "packages/ranger-core" },
+    { "path": "packages/react-ranger" }
   ]
   // "exclude": ["node_modules"]
 }
