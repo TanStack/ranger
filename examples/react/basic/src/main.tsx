@@ -32,7 +32,7 @@ function App() {
             borderRadius: "2px"
         }}
       >
-        {rangerInstance.handles().map(({ value, onKeyDownHandler, onMouseDownHandler, onTouchStart, isActive }: Ranger<HTMLDivElement>, i: number) => (
+        {rangerInstance.handles().map(({ value, onKeyDownHandler, onMouseDownHandler, onTouchStart, isActive }, i) => (
           <button
             key={i}
             onKeyDown={onKeyDownHandler}
