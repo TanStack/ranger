@@ -5,15 +5,15 @@ import { useRanger, Ranger } from "../../../../packages/react-ranger";
 
 function App() {
   const rangerRef = React.useRef<HTMLDivElement>(null);
-  const [values, setValues] = React.useState([10, 15]);
+  const [values, setValues] = React.useState<ReadonlyArray<number>>([10, 15]);
 
-  const rangerInstance = useRanger({
+  const rangerInstance = useRanger<HTMLDivElement>({
+    getRangerElement: () => rangerRef.current,
     values,
     min: 0,
     max: 100,
     stepSize: 5,
     onChange: (instance: Ranger<HTMLDivElement>) => setValues(instance.sortedValues),
-    getRangerElement: () => rangerRef.current,
   });
 
   return (

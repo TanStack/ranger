@@ -4,50 +4,64 @@ type RangerChangeEvent<TTrackElement> = (
   instance: Ranger<TTrackElement>,
 ) => void
 
-export interface RangerOptions<TTrackElement = unknown> {
-  // Required from the user
-  getRangerElement: () => TTrackElement
+type RangerInterpolator = {
+  getPercentageForValue: (val: number, min: number, max: number) => number
+  getValueForClientX: (
+    clientX: number,
+    trackDims: { width: number; left: number },
+    min: number,
+    max: number,
+  ) => number
+}
+
+type RangerClassConfig<TTrackElement = unknown> = {
+  getRangerElement: () => TTrackElement | null
   values: ReadonlyArray<number>
 
-  interpolator?: {
-    getPercentageForValue: (val: number, min: number, max: number) => number
-    getValueForClientX: (
-      clientX: number,
-      trackDims: { width: number; left: number },
-      min: number,
-      max: number,
-    ) => number
-  }
-  tickSize?: number
   min: number
   max: number
-  ticks: ReadonlyArray<number>
-  steps: ReadonlyArray<number>
-  stepSize: number
 
-  onChange?: RangerChangeEvent<TTrackElement>
+  tickSize: number
+  ticks?: ReadonlyArray<number>
+
+  interpolator: RangerInterpolator
+  onChange: RangerChangeEvent<TTrackElement>
   onDrag?: RangerChangeEvent<TTrackElement>
 
   rerender: () => void
+  debug: boolean
+} & ({ stepSize: number } | { steps: ReadonlyArray<number> })
+
+export type RangerConfig<TTrackElement = unknown> = Omit<
+  RangerClassConfig<TTrackElement>,
+  'tickSize' | 'interpolator' | 'onChange' | 'debug'
+> & {
+  tickSize?: number
+  interpolator?: RangerInterpolator
+  onChange?: RangerChangeEvent<TTrackElement>
   debug?: boolean
-}
+} & ({ stepSize: number } | { steps: ReadonlyArray<number> })
+
+export type RangerOptions<TTrackElement = unknown> = Omit<
+  RangerConfig<TTrackElement>,
+  'rerender'
+> &
+  ({ stepSize: number } | { steps: ReadonlyArray<number> })
 
 export class Ranger<TTrackElement = unknown> {
   activeHandleIndex: number | undefined
   tempValues: ReadonlyArray<number> | undefined
   sortedValues: ReadonlyArray<number> = []
 
-  options!: Required<Omit<RangerOptions<TTrackElement>, 'onDrag'>> & {
-    onDrag?: RangerChangeEvent<TTrackElement>
-  }
+  options!: RangerClassConfig<TTrackElement>
 
   private rangerElement: TTrackElement | null = null
 
-  constructor(opts: RangerOptions<TTrackElement>) {
+  constructor(opts: RangerConfig<TTrackElement>) {
     this.setOptions(opts)
   }
 
-  setOptions(opts: RangerOptions<TTrackElement>) {
+  setOptions(opts: RangerConfig<TTrackElement>) {
     Object.entries(opts).forEach(([key, value]) => {
       if (typeof value === 'undefined') delete (opts as any)[key]
     })
@@ -80,9 +94,10 @@ export class Ranger<TTrackElement = unknown> {
   }
 
   getNextStep = (val: number, direction: number): number => {
-    const { steps, stepSize, min, max } = this.options
+    const { min, max } = this.options
 
-    if (steps) {
+    if ('steps' in this.options) {
+      const { steps } = this.options
       let currIndex = steps.indexOf(val)
       let nextIndex = currIndex + direction
       if (nextIndex >= 0 && nextIndex < steps.length) {
@@ -91,14 +106,7 @@ export class Ranger<TTrackElement = unknown> {
         return val
       }
     } else {
-      if (process.env.NODE_ENV !== 'production' && this.options.debug) {
-        if (typeof stepSize === 'undefined') {
-          throw new Error(
-            'Warning: The option `stepSize` is expected in `useRanger`, but its value is `undefined`',
-          )
-        }
-      }
-      let nextVal = val + stepSize * direction
+      let nextVal = val + this.options.stepSize * direction
       if (nextVal >= min && nextVal <= max) {
         return nextVal
       } else {
@@ -108,12 +116,12 @@ export class Ranger<TTrackElement = unknown> {
   }
 
   roundToStep = (val: number) => {
-    const { steps, stepSize, min, max } = this.options
+    const { min, max } = this.options
 
     let left = min
     let right = max
-    if (steps) {
-      steps.forEach((step) => {
+    if ('steps' in this.options) {
+      this.options.steps.forEach((step) => {
         if (step <= val && step > left) {
           left = step
         }
@@ -122,13 +130,7 @@ export class Ranger<TTrackElement = unknown> {
         }
       })
     } else {
-      if (process.env.NODE_ENV !== 'production' && this.options.debug) {
-        if (typeof stepSize === 'undefined') {
-          throw new Error(
-            'Warning: The option `stepSize` is expected in `useRanger`, but its value is `undefined`',
-          )
-        }
-      }
+      const { stepSize } = this.options
       while (left < val && left + stepSize < val) {
         left += stepSize
       }
@@ -222,11 +224,12 @@ export class Ranger<TTrackElement = unknown> {
     )
 
   getTicks = () => {
-    let ticks: Array<number> = [...this.options.ticks] || [
-      ...this.options.steps,
-    ]
-
-    if (!ticks) {
+    let ticks: Array<number> = []
+    if (this.options.ticks) {
+      ticks = [...this.options.ticks]
+    } else if ('steps' in this.options) {
+      ticks = [...this.options.steps]
+    } else {
       ticks = [this.options.min]
       while (
         (ticks[ticks.length - 1] as number) <

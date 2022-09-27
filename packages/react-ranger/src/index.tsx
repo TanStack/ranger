@@ -1,4 +1,4 @@
-import { RangerOptions, Ranger } from '../../ranger-core/src'
+import { RangerConfig, RangerOptions, Ranger } from '../../ranger-core/src'
 import React from 'react'
 
 const useIsomorphicLayoutEffect =
@@ -8,8 +8,7 @@ export function useRanger<TTrackElement>(
   options: RangerOptions<TTrackElement>,
 ): Ranger<TTrackElement> {
   const rerender = React.useReducer(() => ({}), {})[1]
-
-  const resolvedOptions: RangerOptions<TTrackElement> = {
+  const resolvedOptions: RangerConfig<TTrackElement> = {
     ...options,
     rerender: rerender,
     onChange: (instance) => {
