@@ -1,11 +1,10 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import ReactDOM from "react-dom";
 import { useRanger, Ranger } from "../../../../packages/react-ranger";
 
 function App() {
+  const [values, setValues] = React.useState<ReadonlyArray<number>>([10]);
   const rangerRef = React.useRef<HTMLDivElement>(null);
-  const [values, setValues] = React.useState<ReadonlyArray<number>>([10, 15]);
 
   const rangerInstance = useRanger<HTMLDivElement>({
     getRangerElement: () => rangerRef.current,
@@ -13,12 +12,13 @@ function App() {
     min: 0,
     max: 100,
     stepSize: 5,
-    onChange: (instance: Ranger<HTMLDivElement>) => setValues(instance.sortedValues),
+    onDrag: (instance: Ranger<HTMLDivElement>) => setValues(instance.sortedValues),
   });
+
 
   return (
     <div className="App" style={{ padding: 10 }}>
-      <h1>Basic Range</h1>
+      <h1>Update On Drag</h1>
       <br />
       <br />
       <div
