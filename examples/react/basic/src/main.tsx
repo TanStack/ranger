@@ -19,6 +19,7 @@ function App() {
   return (
     <div className="App" style={{ padding: 10 }}>
       <h1>Basic Range</h1>
+      <span>Active Index: {rangerInstance.activeHandleIndex}</span>
       <br />
       <br />
       <div
