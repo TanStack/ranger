@@ -250,28 +250,6 @@ export class Ranger<TTrackElement = unknown> {
     }))
   }
 
-  getSegments = () => {
-    const sortedValues = sortNumList(this.tempValues || this.options.values)
-
-    return [...sortedValues, this.options.max].map((value, i) => ({
-      value,
-      getSegmentProps: ({ key = i, ...rest } = {}) => {
-        const left = this.getPercentageForValue(
-          (sortedValues[i - 1] as number)
-            ? (sortedValues[i - 1] as number)
-            : this.options.min,
-        )
-        const width = this.getPercentageForValue(value) - left
-        return {
-          key,
-          left,
-          width,
-          ...rest,
-        }
-      },
-    }))
-  }
-
   handles = () => {
     return (this.tempValues || this.options.values).map((value, i) => ({
       value,
