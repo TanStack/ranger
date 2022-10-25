@@ -20,13 +20,6 @@ steps: Array<number>
 ```
 An array of custom steps to use. This will override `stepSize`
 
-### tickSize
-
-```ts
-tickSize: number = 10
-```
-Size of tick
-
 ### ticks
 
 ```ts
@@ -36,10 +29,11 @@ An array of custom ticks to use. This will override `tickSize`
 
 ## API
 
-### ticks
+### getTicks
 ```tsx
-ticks: ReadonlyArray<{value: number; getTickProps: function}>
+getTicks: () => ReadonlyArray<{value: number; key: number; percentage: number}>
 ```
 Ticks to be rendered. Each `tick` has the following props:
   - `value: number` - The tick number to be displayed
-  - `getTickProps(userProps): func` - A function that take optional props and returns the combined necessary props for the tick component.
+  - `key: number` - The key of a tick
+  - `percentage: number` - Percentage value of where tick should be placed on ranger

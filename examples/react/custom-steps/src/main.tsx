@@ -12,7 +12,6 @@ function App() {
     values,
     min: 1000,
     max: 500000,
-    stepSize: 5,
     steps: [0, 20000, 100000, 250000, 500000],
     ticks: [0, 100000, 250000, 500000],
     onChange: (instance: Ranger<HTMLDivElement>) => setValues(instance.sortedValues),
