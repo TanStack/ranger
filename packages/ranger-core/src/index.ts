@@ -242,11 +242,8 @@ export class Ranger<TTrackElement = unknown> {
 
     return ticks.map((value, i) => ({
       value,
-      getTickProps: ({ key = i, ...rest } = {}) => ({
-        key,
-        percentage: this.getPercentageForValue(value),
-        ...rest,
-      }),
+      key: i,
+      percentage: this.getPercentageForValue(value),
     }))
   }
 

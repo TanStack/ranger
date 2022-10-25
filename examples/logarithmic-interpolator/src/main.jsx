@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
-import ReactDOM from "react-dom";
-import { useRanger } from "react-ranger";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { useRanger } from 'react-ranger'
 
 const logInterpolator = {
   getPercentageForValue: (val, min, max) => {
@@ -10,7 +10,7 @@ const logInterpolator = {
 
     if (minSign !== maxSign) {
       throw new Error(
-        'Error: logarithmic interpolation does not support ranges that cross 0.'
+        'Error: logarithmic interpolation does not support ranges that cross 0.',
       )
     }
 
@@ -36,7 +36,7 @@ const logInterpolator = {
 }
 
 function App() {
-  const [values, setValues] = React.useState([10]);
+  const [values, setValues] = React.useState([10])
 
   const { getTrackProps, handles, ticks } = useRanger({
     min: 1,
@@ -45,7 +45,7 @@ function App() {
     values,
     onChange: setValues,
     interpolator: logInterpolator,
-  });
+  })
 
   return (
     <div className="App">
@@ -55,11 +55,11 @@ function App() {
       <div
         {...getTrackProps({
           style: {
-            height: "4px",
-            background: "#ddd",
-            boxShadow: "inset 0 1px 2px rgba(0,0,0,.6)",
-            borderRadius: "2px"
-          }
+            height: '4px',
+            background: '#ddd',
+            boxShadow: 'inset 0 1px 2px rgba(0,0,0,.6)',
+            borderRadius: '2px',
+          },
         })}
       >
         {ticks.map(({ value, getTickProps }) => (
@@ -69,13 +69,13 @@ function App() {
           <button
             {...getHandleProps({
               style: {
-                width: "14px",
-                height: "14px",
-                outline: "none",
-                borderRadius: "100%",
-                background: "linear-gradient(to bottom, #eee 45%, #ddd 55%)",
-                border: "solid 1px #888"
-              }
+                width: '14px',
+                height: '14px',
+                outline: 'none',
+                borderRadius: '100%',
+                background: 'linear-gradient(to bottom, #eee 45%, #ddd 55%)',
+                border: 'solid 1px #888',
+              },
             })}
           />
         ))}
@@ -85,23 +85,23 @@ function App() {
       <br />
       <pre
         style={{
-          display: "inline-block",
-          textAlign: "left"
+          display: 'inline-block',
+          textAlign: 'left',
         }}
       >
         <code>
           {JSON.stringify({
-            values
+            values,
           })}
         </code>
       </pre>
     </div>
-  );
+  )
 }
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )
