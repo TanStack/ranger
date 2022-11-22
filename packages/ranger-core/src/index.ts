@@ -190,6 +190,7 @@ export class Ranger<TTrackElement = unknown> {
 
   handlePress = (e: any, i: number) => {
     this.activeHandleIndex = i
+    this.options.rerender()
 
     const handleRelease = (e: MouseEvent | TouchEvent) => {
       const { tempValues, handleDrag } = this
@@ -245,6 +246,22 @@ export class Ranger<TTrackElement = unknown> {
       key: i,
       percentage: this.getPercentageForValue(value),
     }))
+  }
+
+  getSteps = () => {
+    const values = sortNumList(this.tempValues || this.options.values)
+
+    return [...values, this.options.max].map((value, i) => {
+      const previousValue = values[i - 1]
+      const leftValue =
+        previousValue !== undefined ? previousValue : this.options.min
+      const left = this.getPercentageForValue(leftValue)
+      const width = this.getPercentageForValue(value) - left
+      return {
+        left,
+        width,
+      }
+    })
   }
 
   handles = () => {
