@@ -642,11 +642,6 @@ react-dom@^17.0.2:
     object-assign "^4.1.1"
     scheduler "^0.20.2"
 
-react-ranger@2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/react-ranger/-/react-ranger-2.1.0.tgz#a9007d67a7871736fffc5fe0d7c54a736771e9a1"
-  integrity sha512-d8ezhyX3v/KlN8SkyoE5e8Dybsdmn94eUAqBDsAPrVhZde8sVt6pLJw4fC784KiMmS4LyAjvtjGxhAEqjjGYgw==
-
 react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
