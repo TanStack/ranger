@@ -1,11 +1,12 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { useRanger, Ranger } from '../../../../packages/react-ranger'
 
 function App() {
   const rangerRef = React.useRef<HTMLDivElement>(null)
-  const [values, setValues] = React.useState<ReadonlyArray<number>>([10, 15])
+  const [values, setValues] = React.useState<ReadonlyArray<number>>([
+    10, 15, 50,
+  ])
 
   const rangerInstance = useRanger<HTMLDivElement>({
     getRangerElement: () => rangerRef.current,
