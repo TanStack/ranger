@@ -27,7 +27,7 @@ module.exports = {
       testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/packages/ranger-core/**/*.test.[jt]s?(x)'],
       setupFilesAfterEnv: [
-        '<rootDir>/packages/ranger-core/__tests__/jest.setup.js',
+        '<rootDir>/packages/virtual-core/__tests__/jest.setup.js',
       ],
       snapshotFormat: {
         printBasicPrototype: false,
@@ -39,7 +39,7 @@ module.exports = {
       testEnvironment: 'jsdom',
       testMatch: ['<rootDir>/packages/react-ranger/**/*.test.[jt]s?(x)'],
       setupFilesAfterEnv: [
-        '<rootDir>/packages/react-ranger/__tests__/jest.setup.js',
+        '<rootDir>/packages/react-virtual/__tests__/jest.setup.js',
       ],
       snapshotFormat: {
         printBasicPrototype: false,

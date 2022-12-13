@@ -3,7 +3,17 @@ import { BranchConfig, Package } from './types'
 
 // TODO: List your npm packages here. The first package will be used as the versioner.
 export const packages: Package[] = [
-  { name: '@tanstack/ranger-core', srcDir: 'packages/ranger-core/src' }
+  {
+    name: '@tanstack/ranger-core',
+    packageDir: 'ranger-core',
+    srcDir: 'src',
+  },
+  {
+    name: '@tanstack/react-ranger',
+    packageDir: 'react-ranger',
+    srcDir: 'src',
+    dependencies: ['@tanstack/ranger-core'],
+  }
 ]
 
 export const latestBranch = 'main'
@@ -28,4 +38,4 @@ export const branchConfigs: Record<string, BranchConfig> = {
 }
 
 export const rootDir = path.resolve(__dirname, '..')
-export const examplesDir = path.resolve(rootDir, 'examples')
+export const examplesDirs = ['examples/react']

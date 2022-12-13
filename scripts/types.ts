@@ -20,7 +20,7 @@ export type AuthorOrCommitter = {
 }
 
 export type Parsed = {
-  type: string
+  type: string | null
   scope?: string | null
   subject: string
   merge?: null
@@ -36,6 +36,7 @@ export type Parsed = {
 
 export type Package = {
   name: string
+  packageDir: string
   srcDir: string
   dependencies?: string[]
   peerDependencies?: string[]
