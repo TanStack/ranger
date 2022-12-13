@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { useRanger, Ranger } from '../../../../packages/react-ranger'
+import { useRanger, Ranger } from '@tanstack/react-ranger'
 
 function App() {
   const [values, setValues] = React.useState<ReadonlyArray<number>>([10])

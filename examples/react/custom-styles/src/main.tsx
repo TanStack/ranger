@@ -2,7 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import styled, { createGlobalStyle } from 'styled-components'
-import { useRanger, Ranger } from '../../../../packages/react-ranger'
+import { useRanger, Ranger } from '@tanstack/react-ranger'
 
 const GlobalStyles = createGlobalStyle`
   body {

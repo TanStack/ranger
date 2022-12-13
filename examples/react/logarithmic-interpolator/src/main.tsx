@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { useRanger, Ranger } from '../../../../packages/react-ranger'
+import { useRanger, Ranger } from '@tanstack/react-ranger'
 
 const logInterpolator = {
   getPercentageForValue: (val: number, min: number, max: number) => {
