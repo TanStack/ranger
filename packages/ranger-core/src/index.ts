@@ -188,11 +188,11 @@ export class Ranger<TTrackElement = unknown> {
     }
   }
 
-  handlePress = (e: any, i: number) => {
+  handlePress = (_e: any, i: number) => {
     this.activeHandleIndex = i
     this.options.rerender()
 
-    const handleRelease = (e: MouseEvent | TouchEvent) => {
+    const handleRelease = () => {
       const { tempValues, handleDrag } = this
 
       document.removeEventListener('mousemove', handleDrag)
