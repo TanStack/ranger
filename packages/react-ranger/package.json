@@ -27,8 +27,7 @@
   "types": "build/types/index.d.ts",
   "sideEffects": false,
   "files": [
-    "build/lib/*",
-    "build/umd/*",
+    "build/**",
     "src"
   ],
   "devDependencies": {
