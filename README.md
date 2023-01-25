@@ -61,4 +61,4 @@ $ yarn add react-ranger
 
 ### [Become a Sponsor](https://github.com/sponsors/tannerlinsley/)
 
-<!-- USE THE FORCE LUKE! -->
+<!-- USE THE FORCE, LUKE! -->
