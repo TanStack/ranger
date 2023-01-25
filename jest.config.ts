@@ -23,9 +23,9 @@ const moduleNameMapper = {
 module.exports = {
   projects: [
     {
-      displayName: 'ranger-core',
+      displayName: 'ranger',
       testEnvironment: 'jsdom',
-      testMatch: ['<rootDir>/packages/ranger-core/**/*.test.[jt]s?(x)'],
+      testMatch: ['<rootDir>/packages/ranger/**/*.test.[jt]s?(x)'],
       setupFilesAfterEnv: [
         '<rootDir>/packages/virtual-core/__tests__/jest.setup.js',
       ],

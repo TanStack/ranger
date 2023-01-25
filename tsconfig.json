@@ -2,6 +2,6 @@
   "files": [],
   "references": [
     { "path": "packages/react-ranger" },
-    { "path": "packages/ranger-core" }
+    { "path": "packages/ranger" }
   ]
 }

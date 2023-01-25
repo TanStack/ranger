@@ -1,5 +1,7 @@
-import { RangerConfig, RangerOptions, Ranger } from '@tanstack/ranger'
 import * as React from 'react'
+import { RangerConfig, RangerOptions, Ranger } from '@tanstack/ranger'
+
+export * from '@tanstack/ranger'
 
 const useIsomorphicLayoutEffect =
   typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect

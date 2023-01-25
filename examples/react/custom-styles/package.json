@@ -2,7 +2,7 @@
   "name": "dynamic",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port=3000",
     "build": "vite build",
     "serve": "vite preview",
     "start": "vite"

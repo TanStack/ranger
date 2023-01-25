@@ -22,7 +22,7 @@
     "baseUrl": ".",
     "paths": {
       "@tanstack/react-ranger": ["packages/react-ranger/src"],
-      "@tanstack/ranger-core": ["packages/ranger-core/src"]
+      "@tanstack/ranger": ["packages/ranger/src"]
     }
   }
 }
