@@ -177,7 +177,6 @@ function umdProd({
   banner,
   jsName,
 }: Options): RollupOptions {
-  console.log(umdExternal)
   return {
     // UMD (Prod)
     external: umdExternal,
