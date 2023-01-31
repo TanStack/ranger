@@ -1,6 +1,7 @@
 import { RollupOptions } from 'rollup'
 import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
+// @ts-ignore
 import size from 'rollup-plugin-size'
 import visualizer from 'rollup-plugin-visualizer'
 import replace from '@rollup/plugin-replace'
@@ -186,7 +187,7 @@ function umdProd({
       sourcemap: true,
       file: `${packageDir}/build/umd/index.production.js`,
       name: jsName,
-      // globals,
+      globals,
       banner,
     },
     plugins: [

@@ -1,7 +1,7 @@
 import path from 'path'
 import { BranchConfig, Package } from './types'
 
-// TODO: List your npm packages here. The first package will be used as the versioner.
+// TODO: List your npm packages here.
 export const packages: Package[] = [
   {
     name: '@tanstack/ranger',
