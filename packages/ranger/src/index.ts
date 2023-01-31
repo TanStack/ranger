@@ -1,10 +1,10 @@
 import { linearInterpolator, getBoundingClientRect, sortNumList } from './utils'
 
-type RangerChangeEvent<TTrackElement> = (
+export type RangerChangeEvent<TTrackElement> = (
   instance: Ranger<TTrackElement>,
 ) => void
 
-type RangerInterpolator = {
+export type RangerInterpolator = {
   getPercentageForValue: (val: number, min: number, max: number) => number
   getValueForClientX: (
     clientX: number,
@@ -14,7 +14,7 @@ type RangerInterpolator = {
   ) => number
 }
 
-type RangerClassConfig<TTrackElement = unknown> = {
+export type RangerClassConfig<TTrackElement = unknown> = {
   getRangerElement: () => TTrackElement | null
   values: ReadonlyArray<number>
 

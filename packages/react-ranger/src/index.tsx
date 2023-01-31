@@ -31,5 +31,3 @@ export function useRanger<TTrackElement>(
 
   return instance
 }
-
-export type { Ranger }
