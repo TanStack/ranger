@@ -1,4 +1,3 @@
-
 {
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2020"],
@@ -7,22 +6,20 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": false,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "noUncheckedIndexedAccess": true,
     "strictNullChecks": true,
     "jsx": "react",
     "declaration": true,
     "emitDeclarationOnly": true,
+    "noImplicitReturns": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tanstack/react-ranger": ["packages/react-ranger/src"],
-      "@tanstack/ranger": ["packages/ranger/src"]
+      "@tanstack/router": ["packages/router"],
+      "@tanstack/react-router": ["packages/react-router"],
+      "@tanstack/react-router-devtools": ["packages/react-router-devtools"],
+      "@tanstack/router-cli": ["packages/router-cli"]
     }
   }
 }
