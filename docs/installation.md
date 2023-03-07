@@ -1,24 +1,13 @@
 ---
-name: Installation
-route: /installation
+title: Installation
 ---
 
-# Installation
+You can install TanStack Ranger with any [NPM](https://npmjs.com) package manager.
 
-Install React Ranger as a dependency using `npm` or `yarn`
+Depending on your framework of choice, install one of the following packages:
 
-```bash
-# NPM
-$ npm install react-ranger
-
-# Yarn
-$ yarn add react-ranger
-```
-
-To import React Ranger:
-
-```js
-import { useRanger } from '@tanstack/react-ranger'
-```
-
-Once you've installed React Ranger, continue to [Concepts](./concepts) to read more about how to utilize its API
+- [React](./adapters/react-ranger)
+- Solid (coming soon!)
+- Vue (coming soon!)
+- Svelte (coming soon!)
+- Angular (coming soon!)

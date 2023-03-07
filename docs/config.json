@@ -1,0 +1,94 @@
+{
+  "docSearch": {
+    "appId": "FQ0DQ6MA3C",
+    "apiKey": "8264730bab8a9b7fa6a0c85761d7a3fe",
+    "indexName": "tanstack"
+  },
+  "menu": [
+    {
+      "label": "Getting Started",
+      "children": [
+        {
+          "label": "Overview",
+          "to": "overview"
+        },
+        {
+          "label": "Installation",
+          "to": "installation"
+        },
+        {
+          "label": "Quick Start",
+          "to": "quick-start"
+        }
+      ]
+    },
+    {
+      "label": "Adapters",
+      "children": [
+        {
+          "label": "React",
+          "to": "adapters/react-ranger"
+        }
+      ]
+    },
+    {
+      "label": "API",
+      "children": [
+        {
+          "label": "Core API",
+          "to": "api/core"
+        }
+      ]
+    },
+    {
+      "label": "React Ranger",
+      "children": [
+        {
+          "label": "Basic",
+          "to": "api/react/basic"
+        },
+        {
+          "label": "Custom Steps",
+          "to": "api/react/custom-steps"
+        },
+        {
+          "label": "Custom Styles",
+          "to": "api/react/custom-styles"
+        },
+        {
+          "label": "Logarithmic Interpolator",
+          "to": "api/react/logarithmic-interpolator"
+        },
+        {
+          "label": "Update on Drag",
+          "to": "api/react/update-on-drag"
+        }
+      ]
+    },
+    {
+      "label": "React Examples",
+      "children": [
+        {
+          "label": "Basic",
+          "to": "examples/react/basic?file=src%2Fmain.tsx"
+        },
+        {
+          "label": "Custom Steps",
+          "to": "examples/react/custom-steps?file=src%2Fmain.tsx"
+        },
+        {
+          "label": "Custom Styles",
+          "to": "examples/react/custom-styles?file=src%2Fmain.tsx"
+        },
+        {
+          "label": "Logarithmic Interpolator",
+          "to": "examples/react/logarithmic-interpolator?file=src%2Fmain.tsx"
+        },
+        {
+          "label": "Update on Drag",
+          "to": "examples/react/update-on-drag?file=src%2Fmain.tsx"
+        }
+      ]
+    }
+  ]
+}
