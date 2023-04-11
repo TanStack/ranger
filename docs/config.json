@@ -32,15 +32,6 @@
       ]
     },
     {
-      "label": "API",
-      "children": [
-        {
-          "label": "Core API",
-          "to": "api/core"
-        }
-      ]
-    },
-    {
       "label": "React Ranger",
       "children": [
         {
