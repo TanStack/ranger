@@ -40,7 +40,6 @@ importers:
       prettier: ^2.8.1
       react: ^18.2.0
       react-dom: ^18.2.0
-      react-virtual: ^2.10.4
       rollup: ^2.70.2
       rollup-plugin-dts: ^4.2.2
       rollup-plugin-size: ^0.2.2
@@ -91,7 +90,6 @@ importers:
       prettier: 2.8.3
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
-      react-virtual: 2.10.4_react@18.2.0
       rollup: 2.79.1
       rollup-plugin-dts: 4.2.3_ntuob3xud5wukob6phfmz2mbyy
       rollup-plugin-size: 0.2.2
@@ -2511,10 +2509,6 @@ packages:
     resolution: {integrity: sha512-eJ2jbzjdijiL3B4PrSQaSjuF2sPEQPVCPzBvTHJD9Nz+9dw2SGH4K4xeQJ77YfTq5bRQ+bD8wT11JbeDPmxmGg==}
     dependencies:
       '@octokit/openapi-types': 12.11.0
-    dev: true
-
-  /@reach/observe-rect/1.2.0:
-    resolution: {integrity: sha512-Ba7HmkFgfQxZqqaeIWWkNK0rEhpxVQHIoVyW1YDSkGsGIXzcaW4deC8B0pZrNSSyLTdIk7y+5olKt5+g0GmFIQ==}
     dev: true
 
   /@rollup/plugin-babel/5.3.1_lem6gfpovheiqtduqpuvznnuha:
@@ -6542,15 +6536,6 @@ packages:
   /react-refresh/0.14.0:
     resolution: {integrity: sha512-wViHqhAd8OHeLS/IRMJjTSDHF3U9eWi62F/MledQGPdJGDhodXJ9PBLNGr6WWL7qlH12Mt3TyTpbS+hGXMjCzQ==}
     engines: {node: '>=0.10.0'}
-    dev: true
-
-  /react-virtual/2.10.4_react@18.2.0:
-    resolution: {integrity: sha512-Ir6+oPQZTVHfa6+JL9M7cvMILstFZH/H3jqeYeKI4MSUX+rIruVwFC6nGVXw9wqAw8L0Kg2KvfXxI85OvYQdpQ==}
-    peerDependencies:
-      react: ^16.6.3 || ^17.0.0
-    dependencies:
-      '@reach/observe-rect': 1.2.0
-      react: 18.2.0
     dev: true
 
   /react/17.0.2:
