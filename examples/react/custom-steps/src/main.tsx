@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { useRanger, Ranger } from '@tanstack/react-ranger'
+import { createRoot } from 'react-dom/client'
 
 function App() {
   const [values, setValues] = React.useState<ReadonlyArray<number>>([0, 500000])
@@ -106,9 +106,10 @@ function App() {
   )
 }
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root')!)
+
+root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-  document.getElementById('root'),
 )
