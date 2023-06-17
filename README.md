@@ -28,13 +28,13 @@ Enjoy this library? Try them all! [React Table](https://github.com/tannerlinsley
   <img src='https://github.com/tanstack/ranger/raw/main/media/screenshot.png' width="700"/>
 </p>
 
-## Visit [/docs](https://github.com/tanstack/react-ranger/tree/alpha/docs) for docs, guides, API and more!
+## Visit [/docs](/docs) for docs, guides, API and more!
 
 ## Quick Features
 
 - Headless!
 - Single or Multiple Handles
-- Handle Devider Items
+- Handle Divider Items
 - Custom Steps or Step-Size
 - Custom Ticks
 - <a href="https://bundlephobia.com/result?p=react-ranger@latest" target="\_parent">
@@ -54,8 +54,8 @@ $ yarn add react-ranger
 - Try out the already-migrated examples
 - Try it out in your own projects.
 - Introspect the types! Even without the docs finished, the library ships with 100% typescript to help you explore its capabilities.
-- [Read the contribution guidelines](https://github.com/tanstack/react-table/tree/alpha/CONTRIBUTING.md)
-- Write some docs! Start with the [API docs](https://github.com/tanstack/react-table/tree/alpha/docs/docs/api-reference) and try adding some information about one or more of the features. The types do a decent job of showing what's supported and the capabilities of the library.
+- [Read the contribution guidelines](CONTRIBUTING.md)
+- Write some docs! Start with the [API docs](/docs/api/react) and try adding some information about one or more of the features. The types do a decent job of showing what's supported and the capabilities of the library.
 - Try your hand at migrating an example to v8! The todo list for the examples is above!
 - **Using a plugin?** Try rewriting your plugin (v8 doesn't have a plugin system any more) as a wrapping hook/function that uses `useTable` internally. The new API is much more powerful and easier to compose. If you find something you can't figure out, let us know and we'll add it to the API.
 
