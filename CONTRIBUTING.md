@@ -19,4 +19,4 @@
 - Run the example
   - `pnpm dev`
 - Make changes to the code
-  - If you ran `pnpm dev` the dev watcher will automatically rebuild the code that has changed
+  - If you ran `pnpm dev` the dev watcher will automatically rebuild the code that has changed.
