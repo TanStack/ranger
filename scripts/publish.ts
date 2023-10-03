@@ -561,8 +561,8 @@ async function run() {
     console.info(
       `  Publishing ${pkg.name}@${version} to npm with tag "${npmTag}"...`,
     )
-    // execSync(`${cmd} --token ${process.env.NPM_TOKEN}`)
-    execSync(cmd)
+
+    execSync(`${cmd} --token ${process.env.NPM_TOKEN}`)
   })
 
   console.info()
