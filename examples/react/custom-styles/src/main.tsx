@@ -1,91 +1,78 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import styled, { createGlobalStyle } from 'styled-components'
 import { useRanger, Ranger } from '@tanstack/react-ranger'
 import { createRoot } from 'react-dom/client'
+import './style.css';
 
-const GlobalStyles = createGlobalStyle`
-  body {
-   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-   font-weight: 300;
-  }
-`
+export const Track = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => {
+  return <div className='track' ref={ref} {...props} />
+})
 
-export const Track = styled('div')`
-  height: 8px;
-  width: 90%;
-  position: relative;
-  userselect: none;
-  height: 4px;
-  background: #ddd;
-  boxshadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
-  borderradius: 2px;
-`
+export const Tick = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement> & { percentage: number }>(({ percentage, style, ...props }, ref) => {
+  return (
+    <div
+      className='tick'
+      ref={ref}
+      style={{
+        left: `${percentage}%`,
+        ...style,
+      }}
+      {...props}
+    />
+  )
+})
 
-export const Tick = styled('div')`
-  position: absolute;
-  top: 5px;
-  left: ${(props: { percentage: number }) => `${props.percentage}%`};
-  transform: translateX(-50%);
-  :before {
-    content: '';
-    position: absolute;
-    left: 0;
-    background: rgba(0, 0, 0, 0.2);
-    height: 5px;
-    width: 2px;
-    transform: translate(-50%, 0.7rem);
-  }
-`
+export const TickLabel = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement>>((props, ref) => {
+  return <div className='tick-label' ref={ref} {...props} />
+})
 
-export const TickLabel = styled('div')`
-  position: absolute;
-  font-size: 0.6rem;
-  color: rgba(0, 0, 0, 0.5);
-  top: 100%;
-  transform: translate(-50%, 1.2rem);
-  white-space: nowrap;
-`
+export const Segment = React.forwardRef<HTMLDivElement, React.HTMLProps<HTMLDivElement> & {
+  index: number,
+  left: number,
+}>(({ index, left, width, style, ...props }, ref) => {
+  return (
+    <div
+      className='segment'
+      ref={ref}
+      style={{
+        background: index === 0
+          ? '#3e8aff'
+          : index === 1
+            ? '#00d5c0'
+            : index === 2
+              ? '#f5c200'
+              : '#ff6050',
+        left: `${left}%`,
+        width: `${width}%`,
+        ...style,
+      }}
+      {...props}
+    />
+  )
+})
 
-export const Segment = styled('div')`
-  position: absolute;
-  background: ${(props: { index: number; left: number; width: number }) =>
-    props.index === 0
-      ? '#3e8aff'
-      : props.index === 1
-      ? '#00d5c0'
-      : props.index === 2
-      ? '#f5c200'
-      : '#ff6050'};
-  left: ${(props: { left: number }) => `${props.left}%`};
-  height: 100%;
-  width: ${(props: { width: number }) => `${props.width}%`};
-`
+export const Handle = React.forwardRef<HTMLButtonElement, React.HTMLProps<HTMLButtonElement> & {
+  left: number,
+  active: boolean,
+}>(({ left, active, type, style, ...props }, ref) => {
+  return (
+    <button
+      type="button"
+      className='handle'
+      ref={ref}
+      style={{
+        left: `${left}%`,
+        zIndex: active ? 1 : 0,
+        fontWeight: active ? 'bold' : 'normal',
+        transform: active
+          ? 'translate(-50%, -100%) scale(1.3)'
+          : 'translate(-50%, -50%) scale(0.9)',
+        ...style
+      }}
+      {...props} />
+  )
+})
 
-export const Handle = styled('button')`
-  position: absolute;
-  left: ${(props: { left: number }) => `${props.left}%`};
-  zIndex: isActive ? 1 : 0;
-  appearance: none;
-  border: none;
-  outline: none;
-  background: #ff1a6b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.6rem;
-  height: 1.6rem;
-  border-radius: 100%;
-  font-size: 0.7rem;
-  white-space: nowrap;
-  color: white;
-  font-weight: ${(props: { active: boolean }) =>
-    props.active ? 'bold' : 'normal'};
-  transform: ${(props: { active: boolean }) =>
-    props.active
-      ? 'translate(-50%, -100%) scale(1.3)'
-      : 'translate(-50%, -50%) scale(0.9)'};
-`
 
 function App() {
   const rangerRef = React.useRef<HTMLDivElement>(null)
@@ -105,7 +92,6 @@ function App() {
 
   return (
     <div className="App" style={{ padding: 20 }}>
-      <GlobalStyles />
       <h1>Custom Styles</h1>
       <br />
       <br />
