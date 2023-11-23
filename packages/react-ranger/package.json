@@ -7,16 +7,12 @@
   "homepage": "https://github.com/tanstack/ranger#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tanstack/ranger.git"
+    "url": "git+https://github.com/tanstack/ranger.git",
+    "directory": "packages/react-ranger"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
-  "keywords": [
-    "react",
-    "ranger",
-    "ranger"
-  ],
   "funding": {
     "type": "github",
     "url": "https://github.com/sponsors/tannerlinsley"
