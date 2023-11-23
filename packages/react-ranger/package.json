@@ -1,7 +1,7 @@
 {
   "name": "@tanstack/react-ranger",
   "author": "Tanner Linsley",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Hooks for building range and multi-range sliders in React",
   "license": "MIT",
   "homepage": "https://github.com/tanstack/ranger#readme",
