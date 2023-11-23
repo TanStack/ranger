@@ -35,7 +35,8 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-
+      - name: Set deployment token
+        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
       - name: Publish
         run: |
           pnpm install --no-frozen-lockfile
