@@ -201,12 +201,12 @@ async function run() {
       return
     }
 
-    if (recommendedReleaseLevel === -1) {
-      console.info(
-        `There have been no changes since the release of ${latestTag} that require a new version. You're good!`,
-      )
-      return
-    }
+    // if (recommendedReleaseLevel === -1) {
+    //   console.info(
+    //     `There have been no changes since the release of ${latestTag} that require a new version. You're good!`,
+    //   )
+    //   return
+    // }
   }
 
   function getSorterFn<TItem>(sorters: ((d: TItem) => any)[]) {
