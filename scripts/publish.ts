@@ -583,7 +583,8 @@ async function run() {
     console.info(`  Github release created.`)
 
     console.info(`Committing changes...`)
-    execSync(`git add -A && git commit -m "${releaseCommitMsg(version)}"`)
+    execSync("git add -A ")
+    execSync(`git commit -m "${releaseCommitMsg(version)}"`)
     console.info()
     console.info(`  Committed Changes.`)
     console.info(`Pushing changes...`)
