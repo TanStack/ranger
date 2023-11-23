@@ -4,7 +4,7 @@ import { RangerConfig, RangerOptions, Ranger } from '@tanstack/ranger'
 export * from '@tanstack/ranger'
 
 const useIsomorphicLayoutEffect =
-  typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect
+  typeof window === 'undefined' ? React.useEffect : React.useLayoutEffect
 
 export function useRanger<TTrackElement>(
   options: RangerOptions<TTrackElement>,
