@@ -35,14 +35,13 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      - name: Set deployment token
-        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
       - name: Publish
         run: |
           pnpm install --no-frozen-lockfile
           git config --global user.name 'Tanner Linsley'
           git config --global user.email 'tannerlinsley@users.noreply.github.com'
-          pnpm cipublish
+          npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+          pnpm run cipublish
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
