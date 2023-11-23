@@ -12,7 +12,7 @@ export function useRanger<TTrackElement>(
   const rerender = React.useReducer(() => ({}), {})[1]
   const resolvedOptions: RangerConfig<TTrackElement> = {
     ...options,
-    rerender: rerender,
+    rerender,
     onChange: (instance) => {
       rerender()
       options.onChange?.(instance)
