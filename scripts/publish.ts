@@ -584,7 +584,7 @@ async function run() {
 
     console.info(`Committing changes...`)
     execSync('git add -A ')
-    execSync(`git commit -m "${releaseCommitMsg(version)}"`)
+    execSync(`git commit --verbose -m "${releaseCommitMsg(version)}"`, { encoding: 'utf8' })
 
     console.info()
     console.info(`  Committed Changes.`)
