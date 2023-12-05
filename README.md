@@ -1,4 +1,4 @@
-![React Ranger Header](https://github.com/tanstack/ranger/raw/main/media/header.png)
+![React Ranger Header](https://github.com/tanstack/ranger/raw/main/media/headerv1.png)
 
 Headless UI for building ranger component in TS/JS and React
 
