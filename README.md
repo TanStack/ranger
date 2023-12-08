@@ -31,7 +31,7 @@ Enjoy this library? Try the entire [TanStack](https://tanstack.com)! [React Quer
 
 - Headless!
 - Single or Multiple Handles
-- Handle Devider Items
+- Handle Divider Items
 - Custom Steps or Step-Size
 - Custom Ticks
 
