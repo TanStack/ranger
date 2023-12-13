@@ -2,7 +2,7 @@
 title: Quick Start
 ---
 
-If you're feeling impatient and prefer to skip all of our wonderful documentation, here is the bare minimum to get going with TanStack Router. We'll use React for this example, but the same principles apply to other frameworks.
+If you're feeling impatient and prefer to skip all of our wonderful documentation, here is the bare minimum to get going with TanStack Ranger. We'll use React for this example, but the same principles apply to other frameworks.
 
 ```tsx
 import React from 'react'
@@ -109,4 +109,4 @@ ReactDOM.render(
 
 ```
 
-If you skipped this example or didn't understand something, we don't blame you, because there's so much more to learn to really take advantage of TanStack Router! Let's move on.
+If you skipped this example or didn't understand something, we don't blame you, because there's so much more to learn to really take advantage of TanStack Ranger! Let's move on.
