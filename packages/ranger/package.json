@@ -4,7 +4,7 @@
   "version": "0.0.3",
   "description": "Hooks for building range and multi-range sliders in React",
   "license": "MIT",
-  "homepage": "https://github.com/tannerlinsley/react-ranger#readme",
+  "homepage": "https://github.com/tanstack/ranger#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tanstack/ranger.git"
