@@ -7,7 +7,7 @@
   "homepage": "https://github.com/tannerlinsley/react-ranger#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tanstack/react-ranger.git"
+    "url": "git+https://github.com/tanstack/ranger.git"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
