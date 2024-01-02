@@ -574,7 +574,7 @@ async function run() {
 
   if (branchConfig.ghRelease) {
     console.info(`Creating github release...`)
-    // Stringify the markdown to excape any quotes
+    // Stringify the markdown to escape any quotes
     execSync(
       `gh release create v${version} ${
         !isLatestBranch ? '--prerelease' : ''
