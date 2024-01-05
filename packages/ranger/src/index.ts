@@ -118,9 +118,9 @@ export class Ranger<TTrackElement = unknown> {
   roundToStep = (val: number) => {
     const { min, max } = this.options
 
-    let left = min
-    let right = max
     if ('steps' in this.options) {
+      let left = min
+      let right = max
       this.options.steps.forEach((step) => {
         if (step <= val && step > left) {
           left = step
@@ -129,19 +129,16 @@ export class Ranger<TTrackElement = unknown> {
           right = step
         }
       })
-    } else {
-      const { stepSize } = this.options
-      while (left < val && left + stepSize < val) {
-        left += stepSize
+
+      if (val - left < right - val) {
+        return left
       }
-
-      right = Math.min(left + stepSize, max)
+      return right
     }
 
-    if (val - left < right - val) {
-      return left
-    }
-    return right
+    const { stepSize } = this.options
+
+    return Math.min(Math.round(max / stepSize) * stepSize, max)
   }
 
   handleDrag = (e: any) => {
