@@ -138,7 +138,7 @@ export class Ranger<TTrackElement = unknown> {
 
     const { stepSize } = this.options
 
-    return Math.min(Math.round(max / stepSize) * stepSize, max)
+    return Math.min(Math.round(val / stepSize) * stepSize, max)
   }
 
   handleDrag = (e: any) => {
