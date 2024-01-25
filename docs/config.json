@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/TanStack/tanstack.com/main/tanstack-docs-config.schema.json",
   "docSearch": {
     "appId": "FQ0DQ6MA3C",
     "apiKey": "8264730bab8a9b7fa6a0c85761d7a3fe",
@@ -21,64 +22,71 @@
           "to": "quick-start"
         }
       ]
-    },
+    }
+  ],
+  "frameworkMenus": [
     {
-      "label": "Adapters",
-      "children": [
+      "framework": "react",
+      "menuItems": [
         {
-          "label": "React",
-          "to": "adapters/react-ranger"
-        }
-      ]
-    },
-    {
-      "label": "React Ranger",
-      "children": [
-        {
-          "label": "Basic",
-          "to": "api/react/basic"
+          "label": "Adapters",
+          "children": [
+            {
+              "label": "React Ranger",
+              "to": "framework/react/react-ranger"
+            }
+          ]
         },
         {
-          "label": "Custom Steps",
-          "to": "api/react/custom-steps"
+          "label": "API Reference",
+          "children": [
+            {
+              "label": "Basic",
+              "to": "framework/react/api/basic"
+            },
+            {
+              "label": "Custom Steps",
+              "to": "framework/react/api/custom-steps"
+            },
+            {
+              "label": "Custom Styles",
+              "to": "framework/react/api/custom-styles"
+            },
+            {
+              "label": "Logarithmic Interpolator",
+              "to": "framework/react/api/logarithmic-interpolator"
+            },
+            {
+              "label": "Update on Drag",
+              "to": "framework/react/api/update-on-drag"
+            }
+          ]
         },
         {
-          "label": "Custom Styles",
-          "to": "api/react/custom-styles"
-        },
-        {
-          "label": "Logarithmic Interpolator",
-          "to": "api/react/logarithmic-interpolator"
-        },
-        {
-          "label": "Update on Drag",
-          "to": "api/react/update-on-drag"
-        }
-      ]
-    },
-    {
-      "label": "React Examples",
-      "children": [
-        {
-          "label": "Basic",
-          "to": "examples/react/basic?file=src%2Fmain.tsx"
-        },
-        {
-          "label": "Custom Steps",
-          "to": "examples/react/custom-steps?file=src%2Fmain.tsx"
-        },
-        {
-          "label": "Custom Styles",
-          "to": "examples/react/custom-styles?file=src%2Fmain.tsx"
-        },
-        {
-          "label": "Logarithmic Interpolator",
-          "to": "examples/react/logarithmic-interpolator?file=src%2Fmain.tsx"
-        },
-        {
-          "label": "Update on Drag",
-          "to": "examples/react/update-on-drag?file=src%2Fmain.tsx"
-        }
+          "label": "Examples",
+          "children": [
+            {
+              "label": "Basic",
+              "to": "framework/react/examples/basic"
+            },
+            {
+              "label": "Custom Steps",
+              "to": "framework/react/examples/custom-steps"
+            },
+            {
+              "label": "Custom Styles",
+              "to": "framework/react/examples/custom-styles"
+            },
+            {
+              "label": "Logarithmic Interpolator",
+              "to": "framework/react/examples/logarithmic-interpolator"
+            },
+            {
+              "label": "Update on Drag",
+              "to": "framework/react/examples/update-on-drag"
+            }
+          ]
+        }    
       ]
     }
   ]
