@@ -116,7 +116,6 @@ export class Ranger<TTrackElement = unknown> {
   }
 
   getClosesValueIndex = (val: number): number => {
-    let index = -1
     let closesValueIndex = -1
     let distanceBuffer = -1
 
