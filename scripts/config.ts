@@ -12,6 +12,14 @@ export const packages: Package[] = [
     globals: {},
   },
   {
+    name: '@tanstack/vue-ranger',
+    packageDir: 'vue-ranger',
+    srcDir: 'src',
+    jsName: 'VueRanger',
+    entryFile: 'src/index.ts',
+    globals: {},
+  },
+  {
     name: '@tanstack/react-ranger',
     packageDir: 'react-ranger',
     srcDir: 'src',
@@ -43,4 +51,4 @@ export const branchConfigs: Record<string, BranchConfig> = {
 }
 
 export const rootDir = path.resolve(__dirname, '..')
-export const examplesDirs = ['examples/react']
+export const examplesDirs = ['examples/react', 'examples/vue']

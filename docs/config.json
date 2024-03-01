@@ -86,7 +86,39 @@
               "to": "framework/react/examples/update-on-drag"
             }
           ]
-        }    
+        }
+      ]
+    },
+    {
+      "framework": "vue",
+      "menuItems": [
+        {
+          "label": "Adapters",
+          "children": [
+            {
+              "label": "Vue Ranger",
+              "to": "framework/vue/vue-ranger"
+            }
+          ]
+        },
+        {
+          "label": "API Reference",
+          "children": [
+            {
+              "label": "Basic",
+              "to": "framework/vue/api/basic"
+            }
+          ]
+        },
+        {
+          "label": "Examples",
+          "children": [
+            {
+              "label": "Basic",
+              "to": "framework/vue/examples/basic"
+            }
+          ]
+        }
       ]
     }
   ]

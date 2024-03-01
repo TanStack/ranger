@@ -1,0 +1,39 @@
+{
+  "name": "@tanstack/vue-ranger",
+  "author": "Tanner Linsley",
+  "version": "0.0.4",
+  "description": "Hooks for building range and multi-range sliders in Vue",
+  "license": "MIT",
+  "homepage": "https://github.com/tanstack/ranger#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tanstack/ranger.git",
+    "directory": "packages/vue-ranger"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/tannerlinsley"
+  },
+  "module": "build/esm/index.js",
+  "main": "build/cjs/index.js",
+  "browser": "build/umd/index.production.js",
+  "types": "build/types/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "build/**",
+    "src"
+  ],
+  "devDependencies": {
+    "resize-observer-polyfill": "^1.5.1",
+    "vue": "^3.3.4"
+  },
+  "dependencies": {
+    "@tanstack/ranger": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  }
+}

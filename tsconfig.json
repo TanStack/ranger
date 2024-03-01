@@ -2,6 +2,7 @@
   "files": [],
   "references": [
     { "path": "packages/react-ranger" },
+    { "path": "packages/vue-ranger" },
     { "path": "packages/ranger" }
   ]
 }
