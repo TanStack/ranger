@@ -1,5 +1,5 @@
 ---
-name: Custom Steps
+title: Custom Steps
 route: /api/custom-steps
 menu: API
 ---
