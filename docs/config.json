@@ -5,7 +5,7 @@
     "apiKey": "8264730bab8a9b7fa6a0c85761d7a3fe",
     "indexName": "tanstack"
   },
-  "menu": [
+  "sections": [
     {
       "label": "Getting Started",
       "children": [
@@ -22,23 +22,28 @@
           "to": "quick-start"
         }
       ]
-    }
-  ],
-  "frameworkMenus": [
+    },
     {
-      "framework": "react",
-      "menuItems": [
+      "label": "Adapters",
+      "children": [],
+      "frameworks": [
         {
-          "label": "Adapters",
+          "label": "react",
           "children": [
             {
               "label": "React Ranger",
               "to": "framework/react/react-ranger"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "label": "API Reference",
+      "children": [],
+      "frameworks": [
         {
-          "label": "API Reference",
+          "label": "react",
           "children": [
             {
               "label": "Basic",
@@ -61,9 +66,15 @@
               "to": "framework/react/api/update-on-drag"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "label": "Examples",
+      "children": [],
+      "frameworks": [
         {
-          "label": "Examples",
+          "label": "react",
           "children": [
             {
               "label": "Basic",
@@ -86,7 +97,7 @@
               "to": "framework/react/examples/update-on-drag"
             }
           ]
-        }    
+        }
       ]
     }
   ]
