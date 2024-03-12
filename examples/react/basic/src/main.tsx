@@ -34,6 +34,8 @@ function App() {
           boxShadow: 'inset 0 1px 2px rgba(0,0,0,.6)',
           borderRadius: '2px',
         }}
+        onMouseDown={rangerInstance.handleRailPress}
+        onTouchStart={rangerInstance.handleRailPress}
       >
         {rangerInstance
           .handles()
