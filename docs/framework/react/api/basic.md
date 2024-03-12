@@ -1,5 +1,5 @@
 ---
-name: Basic
+title: Basic
 route: /api/basic
 menu: API
 ---
