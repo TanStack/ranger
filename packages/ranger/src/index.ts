@@ -115,12 +115,12 @@ export class Ranger<TTrackElement = unknown> {
     }
   }
 
-  getClosesValueIndex = (val: number): number => {
+  getClosesValueIndex = (percentage: number): number => {
     let closesValueIndex = -1
     let distanceBuffer = -1
 
     this.options.values.forEach((value, index) => {
-      const diff = value - val
+      const diff = this.getPercentageForValue(value) - percentage
       const distance = Math.abs(diff)
       if (closesValueIndex === -1 || distance < distanceBuffer) {
         closesValueIndex = index
@@ -237,14 +237,12 @@ export class Ranger<TTrackElement = unknown> {
     const clientX =
       e.type === 'touchmove' ? e.changedTouches[0].clientX : e.clientX
     const value = this.getValueForClientX(clientX)
-    const activeHandleIndex = this.getClosesValueIndex(value)
+    const percentageForValue = this.getPercentageForValue(value)
+    const activeHandleIndex = this.getClosesValueIndex(percentageForValue)
 
     this.activeHandleIndex = activeHandleIndex
-    this.handleDrag(e)
-    if (this.options.onChange) {
-      this.options.onChange(this)
-    }
 
+    this.handleDrag(e)
     this.handlePress(e, activeHandleIndex)
   }
 
