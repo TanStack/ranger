@@ -115,6 +115,22 @@ export class Ranger<TTrackElement = unknown> {
     }
   }
 
+  getClosesValueIndex = (percentage: number): number => {
+    let closesValueIndex = -1
+    let distanceBuffer = -1
+
+    this.options.values.forEach((value, index) => {
+      const diff = this.getPercentageForValue(value) - percentage
+      const distance = Math.abs(diff)
+      if (closesValueIndex === -1 || distance < distanceBuffer) {
+        closesValueIndex = index
+        distanceBuffer = distance
+      }
+    })
+
+    return closesValueIndex
+  }
+
   roundToStep = (val: number) => {
     const { min, max } = this.options
 
@@ -215,6 +231,19 @@ export class Ranger<TTrackElement = unknown> {
     document.addEventListener('touchmove', handleDrag)
     document.addEventListener('mouseup', handleRelease)
     document.addEventListener('touchend', handleRelease)
+  }
+
+  handleRailPress = (e: any) => {
+    const clientX =
+      e.type === 'touchmove' ? e.changedTouches[0].clientX : e.clientX
+    const value = this.getValueForClientX(clientX)
+    const percentageForValue = this.getPercentageForValue(value)
+    const activeHandleIndex = this.getClosesValueIndex(percentageForValue)
+
+    this.activeHandleIndex = activeHandleIndex
+
+    this.handleDrag(e)
+    this.handlePress(e, activeHandleIndex)
   }
 
   getPercentageForValue = (val: number) =>
