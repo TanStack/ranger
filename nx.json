@@ -1,0 +1,33 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "affected": {
+    "defaultBase": "main"
+  },
+  "defaultBase": "main",
+  "parallel": 5,
+  "namedInputs": {
+    "sharedGlobals": [
+      "{workspaceRoot}/.nvmrc",
+      "{workspaceRoot}/package.json",
+      "{workspaceRoot}/tsconfig.json"
+    ],
+    "default": [
+      "sharedGlobals",
+      "{projectRoot}/**/*",
+      "!{projectRoot}/**/*.md"
+    ],
+    "public": [
+      "default",
+      "{projectRoot}/build",
+      "{projectRoot}/dist"
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["default", "^public"],
+      "outputs": ["{projectRoot}/build", "{projectRoot}/dist"],
+      "cache": true
+    }
+  }
+}
