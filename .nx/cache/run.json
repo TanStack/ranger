@@ -1,9 +1,0 @@
-{
-  "run": {
-    "command": "nx affected --target=build --exclude=examples/**",
-    "startTime": "2024-05-02T11:06:33.662Z",
-    "endTime": "2024-05-02T11:06:33.665Z",
-    "inner": false
-  },
-  "tasks": []
-}
