@@ -1,0 +1,16 @@
+{
+  "composite": true,
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./build/types",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "removeComments": false,
+    "noImplicitAny": false
+  },
+  "files": ["src/index.ts"],
+  "include": [
+    "src"
+    //  "__tests__/**/*.test.*"
+  ]
+}
