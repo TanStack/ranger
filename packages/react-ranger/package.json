@@ -10,6 +10,9 @@
     "url": "git+https://github.com/tanstack/ranger.git",
     "directory": "packages/react-ranger"
   },
+  "scripts": {
+    "build": "vite build"
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
@@ -17,15 +20,16 @@
     "type": "github",
     "url": "https://github.com/sponsors/tannerlinsley"
   },
-  "module": "build/esm/index.js",
-  "main": "build/cjs/index.js",
   "browser": "build/umd/index.production.js",
-  "types": "build/types/index.d.ts",
+  "types": "dist/esm/index.d.ts",
+  "main": "dist/cjs/index.cjs",
+  "module": "dist/esm/index.js",
   "sideEffects": false,
   "files": [
-    "build/**",
+    "dist/**",
     "src"
   ],
+  "type": "module",
   "devDependencies": {
     "@testing-library/react": "^12.1.2",
     "@types/react": "17.0.45",
@@ -36,7 +40,7 @@
   },
   "dependencies": {
     "@tanstack/ranger": "workspace:*",
-    "@vitejs/plugin-react": "^2.2.0"
+    "@vitejs/plugin-react": "^4.2.1"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"

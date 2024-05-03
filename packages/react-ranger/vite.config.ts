@@ -5,10 +5,8 @@ import react from '@vitejs/plugin-react'
 const config = defineConfig({
   plugins: [react()],
   test: {
-    name: 'react-form',
     watch: false,
-    environment: 'jsdom',
-    setupFiles: ['test-setup.ts'],
+    environment: 'jsdom'
   },
 })
 
