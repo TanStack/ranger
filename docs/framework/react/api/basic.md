@@ -9,9 +9,10 @@ Want to skip to the implementation? Check out these examples:
 
 - [basic](../../examples/react/basic)
 
-The API below described how to use the **basic** features.
+The API below describes how to use the **basic** features.
 
 ## Options
+
 
 ### values
 
@@ -49,6 +50,7 @@ onChange: (instance: Ranger<TTrackElement>) => void
 A function that is called when the handle is released.
 
 ## API
+
 
 ### handles
 ```tsx
