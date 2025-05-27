@@ -13,6 +13,7 @@ The API below describes how to use the **basic** features.
 
 ## Options
 
+
 ### values
 
 ```tsx
@@ -49,6 +50,7 @@ onChange: (instance: Ranger<TTrackElement>) => void
 A function that is called when the handle is released.
 
 ## API
+
 
 ### handles
 ```tsx
