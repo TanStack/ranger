@@ -42,7 +42,7 @@ A lightweight, framework‑agnostic utility for building fully type‑safe range
 - Lightweight, simple, and easily integrated in any app
 
 
-### <a href="https://tanstack.com/pacer">Read the docs →</b></a>
+### <a href="https://tanstack.com/ranger">Read the docs →</b></a>
 
 ## Partners
 
