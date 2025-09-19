@@ -3,6 +3,8 @@
   <img src="./media/header_ranger.png" alt="TanStack Ranger" />
 </div>
 
+<br />
+
 <div align="center">
 <a href="https://npmjs.com/package/@tanstack/ranger" target="\_parent">
   <img alt="" src="https://img.shields.io/npm/dm/@tanstack/ranger.svg" alt="npm downloads"/>
