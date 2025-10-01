@@ -5,9 +5,10 @@ menu: API
 ---
 
 ## Examples
+
 Want to skip to the implementation? Check out these examples:
 
-- [basic](../../examples/react/basic)
+- [basic](https://tanstack.com/ranger/latest/docs/framework/react/examples/basic)
 
 The API below described how to use the **basic** features.
 
@@ -18,6 +19,7 @@ The API below described how to use the **basic** features.
 ```tsx
 values: ReadonlyArray<number>
 ```
+
 **Required** The current value (or values) for the range.
 
 ### min
@@ -25,6 +27,7 @@ values: ReadonlyArray<number>
 ```tsx
 min: number
 ```
+
 **Required** The minimum limit for the range.
 
 ### max
@@ -32,6 +35,7 @@ min: number
 ```tsx
 max: number
 ```
+
 **Required** The maximum limit for the range.
 
 ### stepSize
@@ -39,6 +43,7 @@ max: number
 ```ts
 stepSize: number
 ```
+
 **Required** The distance between selectable steps.
 
 ### onChange
@@ -46,23 +51,35 @@ stepSize: number
 ```ts
 onChange: (instance: Ranger<TTrackElement>) => void
 ```
+
 A function that is called when the handle is released.
 
 ## API
 
 ### handles
+
 ```tsx
-handles: ReadonlyArray<{value: number; isActive: boolean; onKeyDownHandler(event): function; onMouseDownHandler(event): function; onTouchStart(event): function}>
+handles: ReadonlyArray<{
+  value: number
+  isActive: boolean
+  onKeyDownHandler(event): function
+  onMouseDownHandler(event): function
+  onTouchStart(event): function
+}>
 ```
+
 Handles to be rendered. Each `handle` has the following props:
- - `value: number` - The current value for the handle.
- - `isActive: boolean` - Denotes if the handle is currently being dragged.
- - `onKeyDownHandler(event): func`
- - `onMouseDownHandler(event): func`
- - `onTouchStart(event): func`
+
+- `value: number` - The current value for the handle.
+- `isActive: boolean` - Denotes if the handle is currently being dragged.
+- `onKeyDownHandler(event): func`
+- `onMouseDownHandler(event): func`
+- `onTouchStart(event): func`
 
 ### activeHandleIndex
+
 ```tsx
 activeHandleIndex: null | number
 ```
+
 The zero-based index of the handle that is currently being dragged, or `null` if no handle is being dragged.
