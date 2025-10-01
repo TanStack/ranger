@@ -5,9 +5,10 @@ menu: API
 ---
 
 ## Examples
+
 Want to skip to the implementation? Check out these examples:
 
-- [custom-steps](../examples/custom-steps)
+- [custom-steps](https://tanstack.com/ranger/latest/docs/framework/react/examples/custom-steps)
 
 The API below described how to use the **custom-steps** features.
 
@@ -18,6 +19,7 @@ The API below described how to use the **custom-steps** features.
 ```ts
 steps: Array<number>
 ```
+
 An array of custom steps to use. This will override `stepSize`
 
 ### ticks
@@ -25,15 +27,20 @@ An array of custom steps to use. This will override `stepSize`
 ```ts
 ticks: Array<number>
 ```
+
 An array of custom ticks to use. This will override `tickSize`
 
 ## API
 
 ### getTicks
+
 ```tsx
-getTicks: () => ReadonlyArray<{value: number; key: number; percentage: number}>
+getTicks: () =>
+  ReadonlyArray<{ value: number; key: number; percentage: number }>
 ```
+
 Ticks to be rendered. Each `tick` has the following props:
-  - `value: number` - The tick number to be displayed
-  - `key: number` - The key of a tick
-  - `percentage: number` - Percentage value of where tick should be placed on ranger
+
+- `value: number` - The tick number to be displayed
+- `key: number` - The key of a tick
+- `percentage: number` - Percentage value of where tick should be placed on ranger
