@@ -235,14 +235,17 @@ async function run() {
     ? `Manual Release: ${process.env.TAG}`
     : await Promise.all(
         Object.entries(
-          commitsSinceLatestTag.reduce((acc, next) => {
-            const type = next.parsed.type?.toLowerCase() ?? 'other'
+          commitsSinceLatestTag.reduce(
+            (acc, next) => {
+              const type = next.parsed.type?.toLowerCase() ?? 'other'
 
-            return {
-              ...acc,
-              [type]: [...(acc[type] || []), next],
-            }
-          }, {} as Record<string, Commit[]>),
+              return {
+                ...acc,
+                [type]: [...(acc[type] || []), next],
+              }
+            },
+            {} as Record<string, Commit[]>,
+          ),
         )
           .sort(
             getSorterFn([
@@ -583,7 +586,10 @@ async function run() {
     console.info(`  Github release created.`)
 
     console.info(`Committing changes...`)
-    execSync(`git add -A && git commit --verbose -m "${releaseCommitMsg(version)}"`, { encoding: 'utf8' })
+    execSync(
+      `git add -A && git commit --verbose -m "${releaseCommitMsg(version)}"`,
+      { encoding: 'utf8' },
+    )
 
     console.info()
     console.info(`  Committed Changes.`)

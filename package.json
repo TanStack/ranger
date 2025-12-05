@@ -1,31 +1,28 @@
 {
+  "name": "root",
   "private": true,
-  "repository": "https://github.com/tanstack/ranger.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tanstack/ranger.git"
+  },
   "packageManager": "pnpm@8.15.9",
   "scripts": {
     "clean-dist": "pnpm -rc --parallel exec 'rm -rf build dist'",
     "clean-all": "pnpm -rc --parallel exec 'rm -rf build dist node_modules'",
-    "test": "(is-ci && pnpm test:ci) || pnpm test:dev",
-    "test:ci": "vitest run",
-    "test:dev": "vitest watch",
+    "test": "pnpm run test:ci",
+    "test:ci": "pnpm run test:lib && pnpm run test:types",
+    "test:types": "tsc -b",
+    "test:lib": "vitest run",
+    "test:lib:dev": "vitest watch",
     "test:docs": "ts-node scripts/verify-links.ts",
     "build": "rollup --config rollup.config.js",
     "watch": "concurrently --kill-others \"rollup --config rollup.config.js -w\" \"tsc -b --watch\"",
-    "linkAll": "lerna exec 'pnpm link' --parallel",
-    "unlinkAll": "lerna exec 'pnpm unlink' --parallel",
-    "dev": "pnpm watch",
-    "prettier": "prettier \"packages/*/{src/**,examples/**/src/**}.{md,js,jsx,ts,tsx,json}\" --write",
+    "dev": "pnpm run watch",
+    "format": "prettier --experimental-cli --ignore-unknown '**/*' --write",
     "visualize": "pnpm -rc --parallel exec open build/stats-html.html",
     "cipublish": "ts-node scripts/publish.ts",
-    "cipublishforce": "CI=true pnpm cipublish",
-    "typecheck": "tsc -b",
-    "typecheck-perf": "tsc -b --generateTrace ts-perf"
+    "cipublishforce": "CI=true pnpm cipublish"
   },
-  "namespace": "@tanstack",
-  "workspaces": [
-    "./packages/*",
-    "./examples/react/*"
-  ],
   "pnpm": {
     "overrides": {
       "@tanstack/ranger": "workspace:*",
@@ -40,11 +37,14 @@
     "@commitlint/parse": "^16.2.1",
     "@faker-js/faker": "^6.3.1",
     "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^23.0.4",
     "@rollup/plugin-node-resolve": "^13.2.1",
     "@rollup/plugin-replace": "^4.0.0",
     "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
     "@tsconfig/svelte": "^3.0.0",
+    "@types/babel__core": "^7.1.20",
+    "@types/fs-extra": "^9.0.13",
     "@types/luxon": "^2.3.1",
     "@types/node": "^17.0.25",
     "@types/react": "^18.0.26",
@@ -54,11 +54,12 @@
     "babel-plugin-transform-async-to-promises": "^0.8.18",
     "concurrently": "^7.1.0",
     "current-git-branch": "^1.1.0",
+    "fs-extra": "^10.1.0",
+    "is-ci-cli": "^2.2.0",
     "git-log-parser": "^1.2.0",
-    "markdown-link-extractor": "^4.0.3",
-    "lerna": "^4.0.0",
     "luxon": "^2.3.2",
-    "prettier": "^2.8.1",
+    "markdown-link-extractor": "^4.0.3",
+    "prettier": "^3.7.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^2.70.2",
@@ -73,15 +74,8 @@
     "tinyglobby": "^0.2.15",
     "ts-node": "^10.7.0",
     "typescript": "^4.9.4",
-    "vue": "^3.2.33"
-  },
-  "dependencies": {
-    "@rollup/plugin-commonjs": "^23.0.4",
-    "@types/babel__core": "^7.1.20",
-    "@types/fs-extra": "^9.0.13",
-    "fs-extra": "^10.1.0",
-    "is-ci-cli": "^2.2.0",
     "vitest": "^0.26.2",
+    "vue": "^3.2.33",
     "zod": "^3.20.2"
   }
 }

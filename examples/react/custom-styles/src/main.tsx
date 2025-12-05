@@ -53,10 +53,10 @@ export const Segment = styled('div')`
     props.index === 0
       ? '#3e8aff'
       : props.index === 1
-      ? '#00d5c0'
-      : props.index === 2
-      ? '#f5c200'
-      : '#ff6050'};
+        ? '#00d5c0'
+        : props.index === 2
+          ? '#f5c200'
+          : '#ff6050'};
   left: ${(props: { left: number }) => `${props.left}%`};
   height: 100%;
   width: ${(props: { width: number }) => `${props.width}%`};

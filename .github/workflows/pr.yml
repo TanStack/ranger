@@ -36,4 +36,4 @@ jobs:
         run: |
           pnpm install --no-frozen-lockfile
           pnpm build
-          pnpm test
+          pnpm test:ci
