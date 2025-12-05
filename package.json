@@ -1,6 +1,7 @@
 {
   "private": true,
   "repository": "https://github.com/tanstack/ranger.git",
+  "packageManager": "pnpm@8.15.9",
   "scripts": {
     "clean-dist": "pnpm -rc --parallel exec 'rm -rf build dist'",
     "clean-all": "pnpm -rc --parallel exec 'rm -rf build dist node_modules'",
