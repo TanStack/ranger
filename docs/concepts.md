@@ -22,4 +22,5 @@ At the heart of every Ranger is the `Ranger` class. This class will provide ever
 - Ticks (labels) generation
 
 After reading about Ranger's concepts, you should:
+
 - [Check Out Some Examples](./examples/react/basic)

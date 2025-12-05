@@ -5,6 +5,7 @@ menu: API
 ---
 
 ## Examples
+
 Want to skip to the implementation? Check out these examples:
 
 - [logarithmic-interpolator](../examples/logarithmic-interpolator)
@@ -23,6 +24,8 @@ interpolator: {
     getValueForClientX: (clientX: number, trackDims: object, min: number, max: number): number;
 }
 ```
+
 The Interpolator to use. Defaults to the bundled linear-scale interpolator
- - `getPercentageForValue` - Takes the value & range and returns a percentage [0, 100] where the value sits from left to right.
- - `getValueForClientX`- Takes the clientX (offset from the left edge of the ranger) along with the dimensions and range settings and transforms a pixel coordinate back into a value.
+
+- `getPercentageForValue` - Takes the value & range and returns a percentage [0, 100] where the value sits from left to right.
+- `getValueForClientX`- Takes the clientX (offset from the left edge of the ranger) along with the dimensions and range settings and transforms a pixel coordinate back into a value.
