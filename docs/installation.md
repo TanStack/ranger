@@ -6,7 +6,7 @@ You can install TanStack Ranger with any [NPM](https://npmjs.com) package manage
 
 Depending on your framework of choice, install one of the following packages:
 
-- [React](./adapters/react-ranger)
+- [React](./framework/react/react-ranger.md)
 - Solid (coming soon!)
 - Vue (coming soon!)
 - Svelte (coming soon!)
