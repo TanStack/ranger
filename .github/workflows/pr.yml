@@ -1,19 +1,22 @@
-name: pr
+name: PR
+
 on: [pull_request]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
-    name: 'Test'
+    name: Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
         with:
-          fetch-depth: '0'
-      - uses: pnpm/action-setup@v2
-        name: Install pnpm
-        id: pnpm-install
-        with:
-          version: 7
-          run_install: false
+          fetch-depth: 0
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
 
       - name: Get pnpm store directory
         id: pnpm-cache
