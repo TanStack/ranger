@@ -17,7 +17,7 @@ module.exports = {
     '@babel/react',
     '@babel/preset-typescript',
   ],
-  plugins: [
-    cjs && ['@babel/transform-modules-commonjs', { loose }],
-  ].filter(Boolean),
+  plugins: [cjs && ['@babel/transform-modules-commonjs', { loose }]].filter(
+    Boolean,
+  ),
 }
