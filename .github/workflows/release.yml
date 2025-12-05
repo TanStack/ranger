@@ -1,16 +1,23 @@
-name: ci
+name: Release
+
+on:
+  push:
+    branches: [main, alpha, beta, rc]
+
 concurrency:
   group: publish-${{ github.github.base_ref }}
   cancel-in-progress: true
-on: [push]
+
 jobs:
-  test-and-publish:
-    name: 'Test & Publish'
+  release:
+    name: Release
+    if: github.repository_owner == 'TanStack'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
         with:
-          fetch-depth: '0'
+          fetch-depth: 0
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
