@@ -1,5 +1,4 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
-
   "ignoreDependencies": ["@arethetypeswrong/core", "publint"]
 }
