@@ -54,7 +54,7 @@ importers:
   examples/react/basic:
     dependencies:
       '@tanstack/react-ranger':
-        specifier: 0.0.4
+        specifier: 0.0.5
         version: link:../../../packages/react-ranger
       react:
         specifier: ^18.2.0
@@ -79,7 +79,7 @@ importers:
   examples/react/custom-steps:
     dependencies:
       '@tanstack/react-ranger':
-        specifier: 0.0.4
+        specifier: 0.0.5
         version: link:../../../packages/react-ranger
       react:
         specifier: ^18.2.0
@@ -104,7 +104,7 @@ importers:
   examples/react/custom-styles:
     dependencies:
       '@tanstack/react-ranger':
-        specifier: 0.0.4
+        specifier: 0.0.5
         version: link:../../../packages/react-ranger
       react:
         specifier: ^18.2.0
@@ -132,7 +132,7 @@ importers:
   examples/react/logarithmic-interpolator:
     dependencies:
       '@tanstack/react-ranger':
-        specifier: 0.0.4
+        specifier: 0.0.5
         version: link:../../../packages/react-ranger
       react:
         specifier: ^18.2.0
@@ -157,7 +157,7 @@ importers:
   examples/react/update-on-drag:
     dependencies:
       '@tanstack/react-ranger':
-        specifier: 0.0.4
+        specifier: 0.0.5
         version: link:../../../packages/react-ranger
       react:
         specifier: ^18.2.0
