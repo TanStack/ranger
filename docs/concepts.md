@@ -23,4 +23,4 @@ At the heart of every Ranger is the `Ranger` class. This class will provide ever
 
 After reading about Ranger's concepts, you should:
 
-- [Check Out Some Examples](./examples/react/basic)
+- [Check Out Some Examples](/ranger/latest/docs/framework/react/examples/basic)
