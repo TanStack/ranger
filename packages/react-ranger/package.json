@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tanstack/ranger.git",
+    "url": "https://github.com/TanStack/ranger",
     "directory": "packages/react-ranger"
   },
   "homepage": "https://github.com/tanstack/ranger#readme",
