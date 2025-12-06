@@ -21,7 +21,7 @@ jobs:
       - name: Setup Tools
         uses: tanstack/config/.github/setup@main
       - name: Run Checks
-        run: pnpm -r test:pr
+        run: pnpm test:pr
   preview:
     name: Preview
     runs-on: ubuntu-latest
