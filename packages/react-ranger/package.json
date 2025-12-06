@@ -14,27 +14,44 @@
     "type": "github",
     "url": "https://github.com/sponsors/tannerlinsley"
   },
-  "module": "build/esm/index.js",
-  "main": "build/cjs/index.js",
-  "browser": "build/umd/index.production.js",
-  "types": "build/types/index.d.ts",
+  "keywords": [
+    "ranger",
+    "react",
+    "slider"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./src/index.tsx",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": "./dist/index.js",
+      "./package.json": "./package.json"
+    }
+  },
   "sideEffects": false,
   "files": [
-    "build/**",
+    "dist",
     "src"
   ],
   "scripts": {
-    "clean": "premove ./build",
+    "clean": "premove ./dist ./build",
     "test:lib": "vitest run",
     "test:lib:dev": "pnpm test:lib --watch",
-    "test:types": "tsc --emitDeclarationOnly"
-  },
-  "devDependencies": {
-    "@types/react": "17.0.45",
-    "react": "^17.0.2"
+    "test:types": "tsc",
+    "build": "tsdown"
   },
   "dependencies": {
     "@tanstack/ranger": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "react": "^18.2.0",
+    "tsdown": "^0.17.0"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0"

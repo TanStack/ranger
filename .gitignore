@@ -38,4 +38,6 @@ stats.html
 .DS_Store
 node_modules
 .cache
+.nx/cache
+.nx/workspace-data
 dist

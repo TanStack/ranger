@@ -1,4 +1,8 @@
-import { linearInterpolator, getBoundingClientRect, sortNumList } from './utils'
+import {
+  linearInterpolator,
+  getBoundingClientRect,
+  sortNumList,
+} from './utils.js'
 
 export type RangerChangeEvent<TTrackElement> = (
   instance: Ranger<TTrackElement>,

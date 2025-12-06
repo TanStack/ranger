@@ -6,7 +6,8 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tanstack/ranger.git"
+    "url": "git+https://github.com/tanstack/ranger.git",
+    "directory": "packages/ranger"
   },
   "homepage": "https://github.com/tanstack/ranger#readme",
   "funding": {
@@ -14,26 +15,39 @@
     "url": "https://github.com/sponsors/tannerlinsley"
   },
   "keywords": [
-    "react",
     "ranger",
-    "ranger"
-  ],
-  "type": "commonjs",
-  "module": "build/esm/index.js",
-  "main": "build/cjs/index.js",
-  "browser": "build/umd/index.production.js",
-  "types": "build/types/index.d.ts",
-  "engines": {
-    "node": ">=12"
-  },
-  "files": [
-    "build/**",
-    "src"
+    "slider"
   ],
   "scripts": {
-    "clean": "premove ./build",
+    "clean": "premove ./dist ./build",
     "test:lib": "vitest run",
     "test:lib:dev": "pnpm test:lib --watch",
-    "test:types": "tsc --emitDeclarationOnly"
+    "test:types": "tsc",
+    "build": "tsdown"
+  },
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": "./dist/index.js",
+      "./package.json": "./package.json"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "tsdown": "^0.17.0"
   }
 }

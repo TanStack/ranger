@@ -8,7 +8,7 @@ menu: API
 
 Want to skip to the implementation? Check out these examples:
 
-- [basic](../examples/react/basic)
+- [basic](/ranger/latest/docs/framework/react/examples/basic)
 
 The API below described how to use the **basic** features.
 
