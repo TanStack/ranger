@@ -1,5 +1,5 @@
 ---
-name: Custom Styles
+title: Custom Styles
 route: /api/custom-styles
 menu: API
 ---

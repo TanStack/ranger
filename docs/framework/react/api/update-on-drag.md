@@ -1,5 +1,5 @@
 ---
-name: Update On Drag
+title: Update On Drag
 route: /api/update-on-drag
 menu: API
 ---

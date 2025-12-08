@@ -1,5 +1,5 @@
 ---
-name: Logarithmic Interpolator
+title: Logarithmic Interpolator
 route: /api/logarithmic-interpolator
 menu: API
 ---
