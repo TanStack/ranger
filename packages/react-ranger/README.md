@@ -1,4 +1,18 @@
-![React Ranger Header](https://github.com/tanstack/ranger/raw/main/media/headerv1.png)
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="https://tanstack.com/api/readme/ranger.png?framework=react&theme=dark"
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="https://tanstack.com/api/readme/ranger.png?framework=react"
+  />
+  <img
+    src="https://tanstack.com/api/readme/ranger.png?framework=react"
+    alt="TanStack React Ranger"
+    width="900"
+  />
+</picture>
 
 Headless UI for building ranger component in TS/JS and React
 
