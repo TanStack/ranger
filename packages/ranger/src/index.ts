@@ -203,7 +203,12 @@ export class Ranger<TTrackElement = unknown> {
       document.removeEventListener('touchmove', handleDrag)
       document.removeEventListener('mouseup', handleRelease)
       document.removeEventListener('touchend', handleRelease)
-      this.sortedValues = sortNumList(tempValues || this.options.values)
+      const { min, max } = this.options
+      this.sortedValues = sortNumList(
+        (tempValues || this.options.values).map((value) =>
+          Math.min(max, Math.max(min, value)),
+        ),
+      )
       if (this.options.onChange) {
         this.options.onChange(this)
       }
